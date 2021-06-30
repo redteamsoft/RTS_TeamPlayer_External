@@ -1,0 +1,359 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'VENDOR_COMMITMENT' | translate }}</ion-title>
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list class="div-mg-0">
+    <div class="div-navegation">
+      <div class="div-nav-height">
+        <div class="div-lbl-customer">
+          <span (click)="LnkNavegation('Customers')" class="lbl-nav-customers">Customers</span>
+        </div>
+        <div class="lbl-nav-arrow-left">
+          <ion-icon style="fill: #3F4965; height: 24px; width: 24px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <g id="chevron-right" transform="translate(-120 -1104)">
+                <rect id="Rectangle_1753" data-name="Rectangle 1753" width="24" height="24"
+                  transform="translate(120 1104)" fill="none" opacity="0" />
+                <path id="chevron-right-2" data-name="chevron-right" d="M8.59,16.58,13.17,12,8.59,7.41,10,6l6,6-6,6Z"
+                  transform="translate(119.41 1104)" />
+              </g>
+            </svg>
+          </ion-icon>
+        </div>
+        <div class="div-btn-nav">
+          <button id="navegations" class="btn-navegations" ion-button color="#488AFF" clear icon-only
+            (click)="MenuNavegation($event)">
+            <ion-icon style="padding: 0;" name="ios-more"></ion-icon>
+          </button>
+        </div>
+        <div class="lbl-nav-arrow-right">
+          <ion-icon style="fill: #3F4965; height: 24px; width: 24px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <g id="chevron-right" transform="translate(-120 -1104)">
+                <rect id="Rectangle_1753" data-name="Rectangle 1753" width="24" height="24"
+                  transform="translate(120 1104)" fill="none" opacity="0" />
+                <path id="chevron-right-2" data-name="chevron-right" d="M8.59,16.58,13.17,12,8.59,7.41,10,6l6,6-6,6Z"
+                  transform="translate(119.41 1104)" />
+              </g>
+            </svg>
+          </ion-icon>
+        </div>
+        <div class="div-lbl-contract">
+          <span class="lbl-nav-contract">Contract</span>
+        </div>
+      </div>
+    </div>
+  </ion-list>
+  <ion-row class="row-bcrump"></ion-row>
+  <ion-list>
+    <div class="div-margin-auto">
+      <div class="statusHeader">
+        <p>{{ 'STATUS_LABEL' | translate }}: <font style="font-weight: 500;">{{transaction._status}}</font>
+        </p>
+      </div>
+      <div class="div-padding">
+        <span class="info-quote">{{ 'COMMITMENT_HEADER' | translate }}:</span>
+      </div>
+      <div class="bg-white">
+        <div id="firstcontainer" class="detail-padding">
+          <div class="detailcontainer">
+            <div class="leftdiv">
+              <p>{{ 'CUSTOMER_LABEL' | translate }}:</p>
+            </div>
+            <div class="rigthdiv">
+
+              <p class="p_bold">{{ customer._customername }} </p>
+
+              <p class="p-mg" *ngIf="transaction._requester != null && transaction._requesterposition == ''">
+                {{ transaction._requester }}</p>
+              <p class="p-mg" *ngIf="transaction._requester != null && transaction._requesterposition != ''">
+                {{ transaction._requester }},
+                <i>{{ transaction._requesterposition }}</i>
+              </p>
+
+            </div>
+          </div>
+          <div class="detailcontainer">
+            <div class="leftdiv">
+              <p>{{ 'PROJECT_LABEL' | translate }}:</p>
+            </div>
+            <div class="rigthdiv">
+              <p *ngIf="project._projectscope == 00">{{ project._projectname }}</p>
+              <p class="p-mg" *ngIf="project._projectscope == 00">{{ project._rtProjNum }}
+              </p>
+              <p class="p-mg" *ngIf="project._projectscope != 00">{{ project._rtProjNum }} -
+                {{ project._rtScopeNum }}</p>
+            </div>
+          </div>
+          <div class="detailcontainer">
+            <div class="leftdiv">
+              <p>{{ 'COMMITMENT_LABEL' | translate }}:</p>
+            </div>
+            <div class="rigthdiv">
+              <p>{{ transaction._transactionnumber }}</p>
+            </div>
+          </div>
+          <div class="detailcontainer">
+            <div class="leftdiv">
+              <p>{{ 'SUBJECT_LABEL' | translate }}:</p>
+            </div>
+            <div class="rigthdiv">
+              <p>{{ transaction._subject }} </p>
+            </div>
+          </div>
+
+          <!--MORE DETAILS-->
+          <div *ngIf="moredetails">
+            <div class="detailcontainer">
+              <div class="leftdiv">
+                <p>{{ 'DATE_LABEL' | translate }}:</p>
+              </div>
+              <div class="rigthdiv">
+                <p>{{CommitmentDate}}</p>
+              </div>
+            </div>
+            <div *ngIf="Locations != '' || LocationAddress != ''" class="detailcontainer">
+              <div class="leftdiv">
+                <p>{{ 'LOCATION_LABEL' | translate }}:</p>
+              </div>
+              <div class="rigthdiv">
+                <p *ngIf="Locations != ''">{{ JobLocation }} </p>
+                <p *ngIf="LocationAddress != ''" class="p_adjust">{{LocationAddress}}</p>
+              </div>
+            </div>
+            <div class="detailcontainer">
+              <div class="leftdiv">
+                <p>{{ 'SCOPE_LABEL' | translate }}:</p>
+              </div>
+              <div class="rigthdiv">
+                <p>{{CommitmentScope}}</p>
+              </div>
+            </div>
+            <div *ngIf="CommitmentTypeBterms == 'YES' || 
+                        CommitmentTypeRetainage == 'YES' ||
+                        (CommitmentTypeDeliveryDate == 'YES' && CommitmentDeliveryDate != '') || 
+                        (CommitmentTypeStartDate == 'YES' && CommitmentStartDate != '') ||
+                        (CommitmentTypeFinishDate == 'YES' && CommitmentFinishDate != '')"
+              class="detailcontainer div-separate">
+              <div class="leftdiv">
+                <p class="p-margin-0">{{ 'TERMS_LABEL' | translate }}:</p>
+              </div>
+              <div class="rigthdiv">
+                <p *ngIf="CommitmentTypeBterms == 'YES'" class="p-margin-0">{{CommitmentTerms}}</p>
+                <p *ngIf="CommitmentTypeRetainage == 'YES'" class="p-margin-0">{{CommitmentRetainage}}%
+                  {{ 'TERMS_RETAINAGE' | translate }}</p>
+                <p *ngIf="CommitmentTypeDeliveryDate == 'YES' && CommitmentDeliveryDate != ''" class="p-margin-0">
+                  {{ 'TERMS_DELIVERY' | translate }}
+                  {{CommitmentDeliveryDate}}</p>
+                <p *ngIf="CommitmentTypeStartDate == 'YES' && CommitmentStartDate != ''" class="p-margin-0">
+                  {{ 'TERMS_START_DATE' | translate }}
+                  {{CommitmentStartDate}}</p>
+                <p *ngIf="CommitmentTypeFinishDate == 'YES' && CommitmentFinishDate != ''" class="p-margin-0">
+                  {{ 'TERMS_FINISH_DATE' | translate }}
+                  {{CommitmentFinishDate}}</p>
+              </div>
+            </div>
+            <div *ngIf="moredetails" class="detailcontainer">
+              <div class="leftdiv">
+                <p>{{ 'AMOUNT_LABEL' | translate }} ({{project._rtMonetarySymbol}}):</p>
+              </div>
+              <div *ngIf="CommitmentCanadianTaxes == 0" class="rigthdiv">
+                <p class="p_bold">{{CommitmentOrderTotal | number:'1.2-2'}}</p>
+              </div>
+              <div *ngIf="CommitmentCanadianTaxes > 0" class="rigthdiv">
+                <p class="p_bold">{{CommitmentTotalWithTax | number:'1.2-2'}}</p>
+              </div>
+            </div>
+          </div>
+          <!--END MORE DETAILS-->
+
+        </div>
+      </div>
+      <br />
+
+      <!--MORE DETAILS-->
+      <div *ngIf="moredetails" class="bg-white">
+        <div class="div-prod-padding">
+          <span class="info-quote">{{ 'PRODUCT_AND_SERVICE' | translate }}</span>
+        </div>
+        <!--PRODUCT&SERVICE HEADERS-->
+        <ion-grid class="padding-5">
+          <ion-row class="row-header">
+            <ion-col class="padding-col col-number"></ion-col>
+            <ion-col class="padding-col col-service-name">{{ 'PRODUCT_AND_SERVICE_DESCRIPTION' | translate }}
+            </ion-col>
+            <ion-col class="padding-col col-amount" text-right>
+              {{ PRODUCT_AND_SERVICE_AMOUNT }}</ion-col>
+          </ion-row>
+        </ion-grid>
+        <!--PRODUCT&SERVICE BODY-->
+        <ion-grid class="padding-0" *ngFor="let data of aData; let i = index">
+          <ion-row class="row-body">
+            <ion-col class="padding-col col-number" text-right>{{i + 1}}.</ion-col>
+            <ion-col *ngIf="MultipleCC" class="padding-col col-service-name">{{data.boLineCstcde}} - {{data.PrtTitle}}
+            </ion-col>
+            <ion-col *ngIf="!MultipleCC" class="padding-col col-service-name">{{data.PrtTitle}}</ion-col>
+            <ion-col class="padding-col col-amount">
+              <ion-label text-right class="margin-0">
+                <span>{{data.Extttl | number:'1.2-2'}}</span>
+              </ion-label>
+              <ion-label text-right class="margin-label-0 font-12">
+                Scope:
+                <span *ngIf="data.TO_Mod == '00'" class="font-weight-medium">Original</span>
+                <span *ngIf="data.TO_Mod != '00'" class="font-weight-medium">{{data.TO_Mod}}</span>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row class="row-line">
+          </ion-row>
+        </ion-grid>
+        <ion-grid class="padding-0">
+          <ion-row style="height: 49px;"></ion-row>
+        </ion-grid>
+        <ion-grid class="grid-summary">
+          <ion-row *ngIf="CommitmentTaxes > 0 || CommitmentCanadianTaxes > 0">
+            <ion-col class="padding-col">{{ 'PRODUCT_AND_SERVICE_SUBTOTAL' | translate }}:</ion-col>
+            <ion-col class="padding-col col-width-summary" text-right>
+              {{project._rtMonetarySymbol}}{{CommitmentSubTotal | number:'1.2-2'}}</ion-col>
+          </ion-row>
+          <ion-row class="row-tax" *ngIf="CommitmentTaxes > 0">
+            <ion-col class="padding-col">({{itemdetail.BOSlsTaxRate}}% {{itemdetail.BOSlsTaxName}})
+              {{ 'PRODUCT_AND_SERVICE_TAX' | translate }}:</ion-col>
+            <ion-col class="padding-col col-width-summary" text-right>
+              {{project._rtMonetarySymbol}}{{CommitmentTaxes | number:'1.2-2'}}</ion-col>
+          </ion-row>
+          <ion-row class="row-valuetax" *ngIf="CommitmentCanadianTaxes > 0">
+            <ion-col class="padding-col">({{itemdetail.BOSlsCanadianTaxRate}}% {{itemdetail.BOSlsCanadianTaxName}})
+              {{ 'PRODUCT_AND_SERVICE_TAX_CANADIAN' | translate }}:</ion-col>
+            <ion-col class="padding-col col-width-summary" text-right>
+              {{project._rtMonetarySymbol}}{{CommitmentCanadianTaxes | number:'1.2-2'}}
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="CommitmentTaxes > 0 || CommitmentCanadianTaxes > 0" style="height: 20px"></ion-row>
+          <ion-row>
+            <ion-col class="padding-col"><b>{{ 'PRODUCT_AND_SERVICE_TOTAL' | translate }}</b></ion-col>
+            <ion-col class="padding-col col-width-summary" text-right>
+              <span *ngIf="CommitmentCanadianTaxes > 0"><b>{{project._rtMonetarySymbol}}{{CommitmentTotalWithTax |
+                  number:'1.2-2'}}</b></span>
+              <span *ngIf="CommitmentCanadianTaxes == 0"><b>{{project._rtMonetarySymbol}}{{CommitmentOrderTotal |
+                  number:'1.2-2'}}</b></span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!--END BODY-->
+      </div>
+      <!--END MORE DETAILS-->
+    </div>
+  </ion-list>
+</ion-content>
+
+<ion-fab right bottom #fab (click)="activeMenuBK()">
+  <button ion-fab class="bg-orange">
+    <ion-icon name="md-arrow-dropup"></ion-icon>
+  </button>
+  <ion-fab-list side="top" id="floatmenu" class="optionTools">
+    <div style="display: flex;" (click)="fabaction('viewcommitment', fab, transaction)">
+      <div *ngIf="ViewPremiumContent" class="div-activated">
+        {{ 'BTN_CONTRACT_DOCUMENTS' | translate }}</div>
+      <div *ngIf="!ViewPremiumContent" class="div-disabled">
+        {{ 'BTN_CONTRACT_DOCUMENTS' | translate }}</div>
+      <div>
+        <button ion-fab>
+          <ion-icon *ngIf="ViewPremiumContent" name="logo-buffer"></ion-icon>
+          <ion-icon *ngIf="!ViewPremiumContent" style="color:#DEDEDE" name="logo-buffer"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div style="display: flex;" (click)="fabaction('planroom', fab, transaction)">
+      <div *ngIf="!ContentDisabled" class="div-activated">Planroom
+      </div>
+      <div *ngIf="ContentDisabled" class="div-disabled">Planroom
+      </div>
+      <div>
+        <button ion-fab>
+          <ion-icon *ngIf="!ContentDisabled" name="ios-paper-outline"></ion-icon>
+          <ion-icon *ngIf="ContentDisabled" style="color:#DEDEDE" name="ios-paper-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div style="display: flex;" (click)="fabaction('waivers', fab, transaction)">
+      <div *ngIf="!ContentDisabled" class="div-activated">{{
+        'WAIVER_STATUS' | translate }}
+      </div>
+      <div *ngIf="ContentDisabled" class="div-disabled">{{
+        'WAIVER_STATUS' | translate }}
+      </div>
+      <div>
+        <button ion-fab>
+          <ion-icon *ngIf="!ContentDisabled" name="ios-umbrella-outline"></ion-icon>
+          <ion-icon *ngIf="ContentDisabled" style="color:#DEDEDE" name="ios-umbrella-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div style="display: flex;" (click)="fabaction('credentials', fab, transaction)">
+      <div *ngIf="!ContentDisabled" class="div-activated">
+        {{ 'CREDENTIAL_STATUS' | translate }}</div>
+      <div *ngIf="ContentDisabled" class="div-disabled">
+        {{ 'CREDENTIAL_STATUS' | translate }}</div>
+      <div>
+        <button ion-fab>
+          <ion-icon *ngIf="!ContentDisabled" name="ios-checkmark-circle-outline"></ion-icon>
+          <ion-icon *ngIf="ContentDisabled" style="color:#DEDEDE" name="ios-checkmark-circle-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div style="display: flex;" (click)="fabaction('moredetails', fab, transaction)">
+      <div *ngIf="!moredetails && !ContentDisabled" class="div-activated">
+        {{ 'MORE_DETAILS' | translate }}</div>
+      <div *ngIf="moredetails && !ContentDisabled" class="div-activated">
+        {{ 'HIDE_DETAILS' | translate }}</div>
+      <div *ngIf="ContentDisabled" class="div-disabled">
+        {{ 'MORE_DETAILS' | translate }}</div>
+      <div>
+        <button ion-fab>
+          <ion-icon *ngIf="!ContentDisabled" name="ios-list-outline"></ion-icon>
+          <ion-icon *ngIf="ContentDisabled" style="color:#DEDEDE" name="ios-list-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <div style="display: flex;" (click)="fabaction('billing', fab, transaction)" *ngIf="btnAccessBilling != 'NoAccess'">
+      <div *ngIf="!olddata" class="div-activated">
+        {{ 'BILLING_BUTTON' | translate }}
+      </div>
+      <div *ngIf="olddata" class="div-disabled">
+        {{ 'BILLING_BUTTON' | translate }}
+      </div>
+      <div>
+        <button ion-fab *ngIf="!olddata">
+          <ion-icon name="ios-calculator"></ion-icon>
+        </button>
+        <button ion-fab style="color:#DEDEDE" *ngIf="olddata">
+          <ion-icon name="ios-calculator"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div style="display: flex;" (click)="fabaction('enter_billing', fab, transaction)" [hidden]="btnAccessBilling">
+      <div *ngIf="!olddata && !ContentDisabled" class="div-activated">
+        {{ 'UPLOAD_BILLING' | translate }}
+      </div>
+      <div *ngIf="olddata || ContentDisabled" class="div-disabled">
+        {{ 'UPLOAD_BILLING' | translate }}
+      </div>
+      <div>
+        <button ion-fab>
+          <ion-icon *ngIf="!olddata && !ContentDisabled" name="ios-paper-plane-outline"></ion-icon>
+          <ion-icon *ngIf="olddata || ContentDisabled" style="color:#DEDEDE" name="ios-paper-plane-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </ion-fab-list>
+</ion-fab>
+<div id="bkmenu" class="backgroundFloatMenu" (click)="activeMenuBK(fab)"></div>

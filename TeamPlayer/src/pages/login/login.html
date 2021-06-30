@@ -1,0 +1,74 @@
+<ion-content class="login-background">
+  <ion-list>
+    <div class="content-login">
+      <div class="tp-logo"></div>
+      <div class="login-tittle">
+        <div *ngIf="email">{{ 'LOGIN_TITLE_EMAIL' | translate}}</div>
+        <div *ngIf="thanksSection">
+          <ion-icon class="thanks-icon" name="md-checkmark-circle"></ion-icon>
+        </div>
+        <div>{{Logintittle}}</div>
+      </div>
+      <div class="login-padding">
+        <ion-item *ngIf="txtemail" class="login-textbox">
+          <input id="txtemail" class="txtemailph" disabled="{{isDisabled}}" type="email" [(ngModel)]="account.email"
+            name="email" placeholder="{{ 'EMAIL' | translate }}" autocomplete="off"
+            (ngModelChange)="lblcolorchange()" />
+        </ion-item>
+        <ion-item *ngIf="lblemail" style="background-color: initial;padding-left: 0px;padding-right: 0;">
+          <label style="color: white !important;font-size: 18px; white-space: initial;">{{account.email}}</label>
+        </ion-item>
+        <br *ngIf="txtcode">
+        <ion-item *ngIf="txtcode" class="login-textbox">
+          <ion-input type="text" [(ngModel)]="account.code" name="code" placeholder="{{ 'LOGIN_CODE' | translate }}">
+          </ion-input>
+        </ion-item>
+        <br *ngIf="txtpass">
+        <ion-item *ngIf="txtpass" class="login-textbox">
+          <ion-input [type]="passwordType" [(ngModel)]="account.password" (input)="showeyeicon(account.password)"
+            name="password" on placeholder="{{ 'PASSWORD' | translate }}" clearOnEdit="false" autocomplete="off">
+          </ion-input>
+
+        </ion-item>
+        <div class="eyepass" *ngIf="eyeShow" (click)="togglePassword()">
+          <ion-icon [name]="passwordIconEye"></ion-icon>
+        </div>
+        <div class="thanks-desc" *ngIf="thanksSection">{{ThanksDesc}}</div>
+      </div>
+      <hr *ngIf="!spinner">
+      <div *ngIf="spinner" class="spinner-loading">
+        <div class="loading-bar"></div>
+        <div class="loading-bar"></div>
+        <div class="loading-bar"></div>
+        <div class="loading-bar"></div>
+      </div>
+      <div class="login-padding">
+        <div *ngIf="email">
+          <button ion-button color="primary" (click)="doContinue('1')"
+            block>{{ 'CONTINUE_BUTTON' | translate }}</button>
+        </div>
+        <div *ngIf="resend">
+          <button ion-button color="primary" (click)="doContinue('2')"
+            block>{{ 'CONTINUE_BUTTON' | translate }}</button>
+        </div>
+        <div *ngIf="thanksSection">
+          <button ion-button color="primary" (click)="doContinue('3')"
+            block>{{ 'CONTINUE_BUTTON' | translate }}</button>
+        </div>
+        <div *ngIf="login">
+          <button ion-button color="primary" (click)="doContinue('4')"
+            block>{{ 'CONTINUE_BUTTON' | translate }}</button>
+        </div>
+        <div class="btn-secondary" *ngIf="resend">
+          <button ion-button color="secondary" (click)="doGetAuthorizationCode('')"
+            block>{{ 'RESEND_BUTTON' | translate }}</button>
+        </div>
+        <div class="btn-secondary" *ngIf="signup">
+          <button ion-button color="secondary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+        </div>
+      </div>
+      <div *ngIf="forgetpass" class="lbl-forgotpass" style="cursor: pointer;"
+        (click)="doGetAuthorizationCode('forgetpass')">{{ 'FORGOT_PASSWORD' | translate }}</div>
+    </div>
+  </ion-list>
+</ion-content>

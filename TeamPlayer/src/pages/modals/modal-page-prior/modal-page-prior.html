@@ -1,0 +1,81 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="white">
+    <ion-buttons left>
+      <button (click)="cancelModal()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="font-size-18">{{ 'BILL_PRIOR_BILLING' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid-1 font-size-14">
+    <ion-row>
+      <ion-col col-12 class="padding-col word-break"><b>{{Line + 1}}. {{CostCode}} - {{Description}}</b></ion-col>
+    </ion-row>
+  </ion-grid>
+  <br>
+  <ion-grid class="grid-2">
+    <ion-row class="styleColumn padding-grid-2">
+      <ion-col text-left class="padding-col">
+        <button type="button" (click)="ToolTip(BILL_LINE_CONTRACT_VALUE_WARNING)" ion-button clear small
+          class="button-contract">{{'BILL_LINE_CONTRACT_VALUE' | translate}}</button> </ion-col>
+      <ion-col text-right class="padding-col">
+        <label class="font-size-14"><b>{{UnitCost | number:'1.2-2'}}</b></label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="grid-3">
+    <ion-row class="row-grid-3">
+      <ion-col col-6 class="col-grid-3">
+        <div>{{'BILL_NUMBER_LABEL' | translate}}</div>
+      </ion-col>
+      <ion-col col-6 text-right class="col-grid-3">
+        <div>{{'BILL_PRIOR_HEADER_BILLING' | translate}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="grid-4">
+    <ion-row *ngFor="let item of ListPriorBilling" class="styleColumn row-grid-4">
+      <ion-col col-6 class="col-grid-4">
+        <div style="word-break: break-all;">
+          <b>{{item.BillNumber}}</b></div>
+        <div class="div-grid-4">
+          <label class="label-grid-4">{{'BILL_PRIOR_DATE' | translate}}:</label>
+          <label>{{item.BillDate | date:'MM/dd/yyyy'}}</label>
+        </div>
+      </ion-col>
+      <ion-col col-6 text-right class="col-grid-4">
+        <div><b>{{item.Billing | number:'1.2-2'}}</b></div>
+        <div class="div-grid-4">
+          <label class="label-grid-4">{{'BILL_PRIOR_THROUGH' | translate}}:</label>
+          <label>{{item.ThroughDate | date:'MM/dd/yyyy'}}</label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="styleColumn row-prior-grid-4">
+      <ion-col col-6 class="col-prior-grid-4">
+        <button type="button" class="button-grid-4" (click)="ToolTip(BILL_PRIOR_BILLING_WARNING)" ion-button clear
+          small>
+          {{'BILL_PRIOR_BILLING' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6 text-right class="col-2-prior-grid-4">
+        <ion-item class="styleInputReadOnly">
+          <ion-input type="tel" [(ngModel)]="PriorBilling" text-right readonly class="input-grid-4"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer style="display: inline-flex;">
+  <button style="height: 56px;" (click)="cancelModal()" ion-button full>{{'BILL_BTN_CLOSE' | translate}}</button>
+</ion-footer>

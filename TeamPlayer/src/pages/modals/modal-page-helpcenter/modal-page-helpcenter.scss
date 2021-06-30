@@ -1,0 +1,50 @@
+page-modal-page-helpcenter {
+  .scroll-content {
+    padding: 16px 8px 16px 8px !important;
+  }
+ 
+  .bar-buttons-md[left] {
+    margin: 0px 6px 0px 6px;
+    padding: 0px 5px 0px 5px;
+  }
+
+  .toolbar-title-md {
+    color: #030404 !important;
+    text-align: left;
+  }
+
+  .content-md {
+    background-color: #ebebeb;
+    color: #030404;
+  }
+   
+  .font-size-14 {
+    font-size: 14px;
+  }
+
+  .font-size-18 div {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .grid-1 {
+    padding-top: 0;
+    padding-bottom: 16px;
+  }
+
+  .grid-2 {
+    background-color: #fff;
+    padding: 20px; 
+    border-bottom: #DEDEDE solid 1px;
+  }
+  
+  .padding-grid-2 {
+    padding-right: 0;
+    padding-left: 0;
+  } 
+ 
+  .padding-col {
+    padding: 0;
+  }
+ 
+}

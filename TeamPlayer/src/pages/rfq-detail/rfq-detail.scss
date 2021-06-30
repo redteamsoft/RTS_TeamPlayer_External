@@ -1,0 +1,78 @@
+page-rfq-detail {
+  .fab-md-in-list { 
+    background-color: #ffffff;
+   } 
+   
+.fab-ios-in-list { 
+    background-color: #ffffff;
+   } 
+
+  .item-profile {
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    height: 250px;
+  }
+
+  .item-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+  }
+
+  .info-quote{
+    font-size: 16px;
+    font-weight: 500; 
+  }
+
+  .detail-padding{
+        padding: 10px 12px 30px 12px;
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .detail-padding-bkwhite{
+        padding: 0px 12px 30px 12px;
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+    }
+
+
+.ion-item-class{
+   background: rgba(255,255,255,0.5);
+   border-radius: 25px;
+   }
+
+ .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+    .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+    .item-inner {  
+        border-bottom-color: #BCE0FD;
+        -webkit-box-shadow: inset 0 -1px 0 0 #BCE0FD;
+        box-shadow: inset 0 -1px 0 0 #BCE0FD;
+        }
+        
+    .item-md.item-input.item-input-has-focus .item-inner,
+    .item-md.item-input.input-has-focus .item-inner {
+      border-bottom-color: #FF8C07;
+      -webkit-box-shadow: inset 0 -1px 0 0 #FF8C07;
+      box-shadow: inset 0 -1px 0 0 #FF8C07;
+    }
+
+ .item-ios.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+    .item-inner, .item-ios.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+    .item-inner {  
+        border-bottom-color: #BCE0FD;
+        -webkit-box-shadow: inset 0 -1px 0 0 #BCE0FD;
+        box-shadow: inset 0 -1px 0 0 #BCE0FD;
+        }
+        
+    .item-ios.item-input.item-input-has-focus .item-inner,
+    .item-ios.item-input.input-has-focus .item-inner {
+      border-bottom-color: #FF8C07;
+      -webkit-box-shadow: inset 0 -1px 0 0 #FF8C07;
+      box-shadow: inset 0 -1px 0 0 #FF8C07;
+    }
+
+
+}

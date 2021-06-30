@@ -1,0 +1,207 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!profileisDisabled">{{ 'PROFILE_EDIT_TITLE' | translate }}</ion-title>
+    <ion-title *ngIf="!companyisDisabled">{{ 'COMPANY_EDIT_TITLE' | translate }}</ion-title>
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar *ngIf="segmentsection">
+    <ion-segment style="padding: 10px 20px 10px 20px;" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
+
+      <ion-segment-button *ngIf="btnAccessProf == 'NoAccess'; else elseProfile"
+        (click)="doToast(noAccessString, 'bottom')">
+        {{ 'SEGMENT_PROFILE_LABEL' | translate }}
+      </ion-segment-button>
+      <ng-template #elseProfile>
+        <ion-segment-button style="border-top-left-radius: 4px;border-bottom-left-radius: 4px;" value="profile">
+          {{ 'SEGMENT_PROFILE_LABEL' | translate }}
+        </ion-segment-button>
+      </ng-template>
+
+      <ion-segment-button *ngIf="btnAccessComp == 'NoAccess'; else elseCompany"
+        (click)="doToast(noAccessString, 'bottom')">
+        {{ 'SEGMENT_COMPANY_LABEL' | translate }}
+      </ion-segment-button>
+      <ng-template #elseCompany>
+        <ion-segment-button style="border-top-right-radius: 4px;border-bottom-right-radius: 4px;" value="company"
+          selected>
+          {{ 'SEGMENT_COMPANY_LABEL' | translate }}
+        </ion-segment-button>
+      </ng-template>
+
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="bknoform" id="contentform" #pageTop>
+  <div *ngIf="type == 'profile' && btnAccessProf == false">
+    <div *ngIf="segmentsection" (click)="editProfile()" style="position: absolute;right: 15%;top: 110px;">
+      <div id="cirProfile" class="orange-circle" style="color:#FF8C07">
+        <ion-icon name="md-create" class="icon-center"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type == 'company' && btnAccessComp == false">
+    <div *ngIf="segmentsection" (click)="editProfile()" style="position: absolute;right: 15%;top: 110px;">
+      <div id="cirProfile" class="orange-circle" style="color:#FF8C07">
+        <ion-icon name="md-create" class="icon-center"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+  <div [ngSwitch]="type">
+    <div *ngIf="segmentsection"
+      style="display: table;margin-left: auto;margin-right: auto;padding-top: 95px; margin-bottom: -50px;">
+      <div style="display: -webkit-box;">
+        <div *ngSwitchCase="'profile'"
+          style="text-align: -webkit-center;padding: 0px 24px 0px 24px;max-width: 500px;margin: auto">
+          <button class="orange-circle-profle">
+            <span class="avatarletters-profile">{{uAvatarLetter}}</span>
+          </button>
+          <p style="color: #3F4965;font-weight: 500;font-size: 24px;margin-top: 18px;">{{user._userfirstname}}
+            {{user._userlastname}}</p>
+          <p style="color: #C5C5C5;font-weight: 300;font-size: 18px;margin-top: -18px;">{{user._companyname}}</p>
+        </div>
+        <div *ngSwitchCase="'company'"
+          style="text-align: -webkit-center;padding: 0px 24px 0px 24px;max-width: 500px;margin: auto;">
+          <div style="height: 75px;">
+            &nbsp;
+          </div>
+          <p style="color: #3F4965;font-weight: 500;font-size: 24px; padding-bottom:22px;">{{account.companyname}}</p>
+        </div>
+      </div>
+    </div>
+
+    <ion-list *ngSwitchCase="'profile'">
+      <form (ngSubmit)="doSave('profile')" [formGroup]="FormProfile" class="widthForm">
+        <div class="profile-padding" id="profileform">
+          <ion-item>
+            <ion-label floating>{{ 'FIRST_NAME' | translate }}<span style="color: #FF8C07" *ngIf="!segmentsection">
+                *</span></ion-label>
+            <ion-input type="text" formControlName="firstname" name="firstname" disabled="{{profileisDisabled}}">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>{{ 'LAST_NAME' | translate }}<span style="color: #FF8C07" *ngIf="!segmentsection">
+                *</span></ion-label>
+            <ion-input type="text" formControlName="lastname" name="lastname" disabled="{{profileisDisabled}}">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>{{ 'POSITION' | translate }}</ion-label>
+            <ion-input type="text" formControlName="userposition" name="userposition" disabled="{{profileisDisabled}}">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>{{ 'MOBILE' | translate }}</ion-label>
+            <ion-input type="tel" formControlName="mobile" name="mobile" disabled="{{profileisDisabled}}">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>{{ 'EMAIL' | translate }}<span style="color: #FF8C07" *ngIf="!segmentsection"> *</span>
+            </ion-label>
+            <ion-input type="email" formControlName="email" name="email" disabled="true"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>{{ 'PASSWORD' | translate }}<span style="color: #FF8C07" *ngIf="!segmentsection">
+                *</span></ion-label>
+            <ion-input [type]="passwordType" (input)="showeyeicon(FormProfile.controls.password.value,1)"
+              formControlName="password" name="password" disabled="{{profileisDisabled}}" clearOnEdit="false">
+            </ion-input>
+          </ion-item>
+          <div class="eyepass" *ngIf="eyeShow && !segmentsection" (click)="togglePassword(1)"
+            style="margin-top: -42px;">
+            <ion-icon [name]="passwordIconEye"></ion-icon>
+          </div>
+          <ion-item *ngIf="!profileisDisabled" style="padding-bottom: 10px;">
+            <ion-label floating>{{ 'CONFIRM_PASSWORD' | translate }}<span style="color: #FF8C07"
+                *ngIf="!segmentsection"> *</span></ion-label>
+            <ion-input [type]="confirmpasswordType" (input)="showeyeicon(FormProfile.controls.confirmpassword.value,2)"
+              formControlName="confirmpassword" name="confirmpassword" clearOnEdit="false"></ion-input>
+          </ion-item>
+          <div class="eyepass" *ngIf="confirmeyeShow && !segmentsection" (click)="togglePassword(2)"
+            style="margin-top: -52px;padding-bottom: 12px;">
+            <ion-icon [name]="confirmpasswordIconEye"></ion-icon>
+          </div>
+          <br>
+        </div>        
+
+        <ion-card *ngIf="FormProfile.controls['password'].errors?.pattern">
+          <div class="errorPassword">
+            <ion-icon ios="ios-warning" md="md-warning"></ion-icon> Password must be minimum 6 characters and may only include these symbols: <strong>$@!%*?&</strong>
+          </div>
+        </ion-card>
+
+        <ion-card *ngIf="FormProfile.controls['confirmpassword'].errors?.mustMatch">
+          <div class="errorPassword">
+            <ion-icon ios="ios-warning" md="md-warning"></ion-icon> Passwords must match
+          </div>
+        </ion-card>
+        <div class="btn-padding" *ngIf="!profileisDisabled">
+          <button ion-button color="primary" [disabled]="!FormProfile.valid" type="submit" block>{{ 'SAVE_BUTTON' |
+            translate }}</button>
+        </div>
+
+        <div class="btn-padding" *ngIf="!profileisDisabled">
+          <button ion-button color="secondary" (click)="editProfile()" block>{{ 'CANCEL_BUTTON' | translate }}</button>
+        </div>
+      </form>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'company'">
+      <div *ngIf="companysection" class="profile-padding" id="companyform">
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_NAME' | translate }}<span style="color: #FF8C07" *ngIf="!segmentsection">
+              *</span></ion-label>
+          <ion-input type="text" [(ngModel)]="account.companyname" name="companyname" disabled="{{companyisDisabled}}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_ADDRESS' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="account.address" name="address" disabled="{{companyisDisabled}}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_CITY' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="account.city" name="city" disabled="{{companyisDisabled}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_STATEORPROVINCE' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="account.stateorprovince" name="stateorprovince"
+            disabled="{{companyisDisabled}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_ZIPCODE' | translate }}</ion-label>
+          <ion-input type="number" [(ngModel)]="account.zipcode" name="zipcode" disabled="{{companyisDisabled}}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_COUNTRY' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="account.country" name="country" disabled="{{companyisDisabled}}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_WEBPAGE' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="account.webpage" name="webpage" disabled="{{companyisDisabled}}">
+          </ion-input>
+        </ion-item>
+        <ion-item style="padding-bottom: 10px;">
+          <ion-label floating>{{ 'COMPANY_PROFILE_PHONENUMBER' | translate }}</ion-label>
+          <ion-input type="tel" [(ngModel)]="account.phonenumber" name="phonenumber" disabled="{{companyisDisabled}}">
+          </ion-input>
+        </ion-item>
+        <br>
+      </div>
+      <div class="btn-padding" *ngIf="!companyisDisabled">
+        <button ion-button color="primary" (click)="doSave('company')" block>{{ 'SAVE_BUTTON' | translate }}</button>
+      </div>
+      <div class="btn-padding" *ngIf="!companyisDisabled">
+        <button ion-button color="secondary" (click)="editProfile()" block>{{ 'CANCEL_BUTTON' | translate }}</button>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>

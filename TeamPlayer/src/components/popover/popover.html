@@ -1,0 +1,7 @@
+<!-- Generated template for the PopoverComponent component -->
+<ion-list class="list-popover">
+  <button ion-item (click)="View()">View</button>
+  <button *ngIf="data.Status != 'Draft'" ion-item (click)="Email()" [hidden]="btnAccessBilling"> Send via Email</button>
+  <button *ngIf="data.Status == 'Rejected by Customer' && data.ReviseBill == 'YES'" ion-item
+    (click)="Recreate()" [hidden]="btnAccessBilling">Revise this Bill</button>
+</ion-list>

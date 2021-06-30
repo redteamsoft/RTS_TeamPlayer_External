@@ -1,0 +1,30 @@
+<!--
+  Generated template for the ModalsTermsConditionsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="white">
+    <ion-buttons left>
+      <button (click)="cancelModal()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="font-size-18">{{'TERMS_TITLE' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid class="grid-comments">
+    <ion-row>
+      <div [innerHtml]="Comment">
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <button color="light" (click)="cancelModal()" class="btn-close" ion-button full icon-start>{{'BILL_BTN_CLOSE' |
+    translate}}</button>
+</ion-footer>

@@ -1,0 +1,142 @@
+page-rfq-upload {
+     
+    .list-md .item-block .item-inner {
+        border-bottom: 1px solid #BCE0FD;
+    }
+
+  .form-padding{ 
+    max-width: 460px;
+    margin: auto;
+    background-color: #ffffff;
+  }
+
+  .quotevalid-left-section{
+    color: #797D80; 
+    padding-right: 10px;
+    font-size: 17px;
+    float: left;
+        height: 67px;
+  }
+
+#itemssection  .item-inner {
+    border-bottom: 1px solid #dedede; 
+}
+
+#days .text-input-md { 
+        margin-left: 10px;
+    text-align: right;
+}
+
+  .quotevalid-right-section{
+    color: #030404;  
+    font-size: 17px; 
+    height: 67px;
+  }
+ 
+ #quotevalid .item-inner{
+      border: 1px solid #FF8C07;
+      box-shadow: inset 0 0px 0 0 #BCE0FD;
+ } 
+
+  .div-quote-valid{ 
+    border-bottom: 1px solid #BCE0FD;
+    max-width: 440px;
+    width: 100%;
+    padding-right: 10px;
+    height: 67px;
+    margin-left: -10px;
+  }
+  .item.item-md .checkbox-md {
+      position: static;
+      display: block;
+      margin: 9px 26px 9px 2px;
+  }
+
+  .item-md .radio-md[item-left], .item-md .radio-md[item-start] {
+    margin: 11px 26px 10px 14px;
+  } 
+  .item-profile {
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    height: 250px;
+  }
+
+  .button-md-secondary{
+    border-radius: 4px;
+  }
+   
+  .item-md {
+     padding-left: 10px; 
+     padding-right: 10px; 
+  }
+
+  .item-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+  }
+
+  .info-quote{ 
+    font-weight: 500;
+  }
+
+  .info-include-quote{
+    color: #797D80;
+    font-weight: 400;
+    font-size: 17px;
+  }
+
+  .detail-padding{
+        padding: 15px;
+        max-width: 500px;
+        margin: auto;
+    }
+ 
+ .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+    .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+    .item-inner {  
+        border-bottom-color: #BCE0FD;
+        -webkit-box-shadow: inset 0 -1px 0 0 #BCE0FD;
+        box-shadow: inset 0 -1px 0 0 #BCE0FD;
+        }
+        
+     
+  .list-ios .item-block .item-inner {
+        border-bottom: 1px solid #BCE0FD;
+    }
+#days .text-input-ios { 
+        margin-left: 10px;
+    text-align: right;
+}
+.item.item-ios .checkbox-ios {
+      position: static;
+      display: block;
+      margin: 9px 26px 9px 2px;
+  }
+
+  .item-ios .radio-ios[item-left], .item-ios .radio-ios[item-start] {
+    margin: 11px 26px 10px 14px;
+  } 
+
+   .button-ios-secondary{
+    border-radius: 4px;
+  }
+
+  .button-ios-primary{
+    border-radius: 4px;
+  }
+  
+  .item-ios {
+     padding-left: 10px; 
+     padding-right: 10px; 
+  }
+
+   .item-ios.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+    .item-inner, .item-ios.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) 
+    .item-inner {  
+        border-bottom-color: #BCE0FD;
+        -webkit-box-shadow: inset 0 -1px 0 0 #BCE0FD;
+        box-shadow: inset 0 -1px 0 0 #BCE0FD;
+        }
+}

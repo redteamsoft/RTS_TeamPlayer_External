@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color="white">
+    <ion-buttons left>
+      <button (click)="cancelModal()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="font-size-18">{{ 'ADD_FILES' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid-2">
+    <ion-row *ngIf="IsBrowser" class="styleColumn padding-grid-2">
+      <ion-col text-left class="padding-col" style="padding-top: 18px;">
+        <label style="font-size: 16px;color: #3F4965;">{{ 'ATTACH_FILES' | translate }}</label>
+      </ion-col>
+      <div style="width: 54px;height: 54px;background-color: #D7ECFE;border-radius: 8px" (click)="fileInput.click()">
+        <ion-icon name="md-images" style="font-size: 28px;color: #3F4965;padding: 14px 0px 0px 15px;"></ion-icon>
+      </div>
+      <input type="file" style="opacity:0;display: none;" #fileInput (change)="fileChanged($event)"
+        (click)="fileInput.value = null" multiple />
+    </ion-row>
+    <ion-row *ngIf="!IsBrowser" class="styleColumn padding-grid-2" (click)="addfiles('document')">
+      <ion-col text-left class="padding-col" style="padding-top: 18px;">
+        <label style="font-size: 16px;color: #3F4965;">{{ 'ATTACH_FILES' | translate }}</label>
+      </ion-col>
+      <div style="width: 54px;height: 54px;background-color: #D7ECFE;border-radius: 8px">
+        <ion-icon name="md-images" style="font-size: 28px;color: #3F4965;padding: 14px 0px 0px 15px;"></ion-icon>
+      </div>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="!IsBrowser" class="grid-2">
+    <ion-row class="styleColumn padding-grid-2" (click)="addfiles('camera')">
+      <ion-col text-left class="padding-col" style="padding-top: 18px;">
+        <label style="font-size: 16px;color: #3F4965;">{{ 'OPEN_CAMERA' | translate }}</label>
+      </ion-col>
+      <div style="width: 54px;height: 54px;background-color: #D7ECFE;border-radius: 8px">
+        <ion-icon name="md-camera" style="font-size: 24px;color: #3F4965;padding: 15px 0px 0px 17px;"></ion-icon>
+      </div>
+    </ion-row>
+  </ion-grid>
+  <!--ion-grid class="grid-2">
+    <ion-row class="styleColumn padding-grid-2" (click)="addfiles('gallery')">     
+      <ion-col text-left class="padding-col" style="padding-top: 18px;">
+        <label style="font-size: 16px;color: #3F4965;">{{ 'GALLERY' | translate }}</label>
+      </ion-col>
+       <div style="width: 54px;height: 54px;background-color: #D7ECFE;border-radius: 8px">        
+          <ion-icon name="md-images" style="font-size: 28px;color: #3F4965;padding: 14px 0px 0px 15px;"></ion-icon>
+          <ion-icon name="md-document" style="font-size: 25px;color: #3F4965;padding: 15px 0px 0px 19px;"></ion-icon>
+      </div>
+    </ion-row> 
+  </ion-grid-->
+</ion-content>

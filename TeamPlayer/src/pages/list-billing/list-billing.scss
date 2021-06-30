@@ -1,0 +1,188 @@
+page-list-billing {
+  .scroll-content {
+    padding: 0 8px 0 8px !important;
+  }
+
+  .list-md {
+    padding: 0;
+  }
+
+  .list-ios {
+    padding: 0;
+  }
+
+  .blue-circle-background {
+    background: #488aff;
+    width: 35px;
+    height: 35px;
+    float: left;
+    border-radius: 100%;
+    margin: 28px 12px 0 12px;
+  }
+
+  .bluecircleletters {
+    font-size: 12px;
+    color: white;
+    margin-left: -1px !important;
+    text-align: -webkit-center;
+  }
+
+  .item-ios.item-block .item-inner {
+    padding-right: 0;
+    border-bottom: 1px solid #c8c7cc;
+  }
+
+  .item-md.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: 1px solid #dedede;
+  }
+
+  .labelProjectDescription {
+    margin-bottom: -10px;
+    white-space: normal;
+    padding-right: 70px;
+    margin-left: 0px;
+    margin: 0px;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .labelTotalBilled {
+    padding-left: 2px;
+    color: #797d80;
+    font-size: 12px;
+  }
+
+  .labelOpen {
+    margin-right: 2px;
+    color: #797d80;
+    font-size: 12px;
+  }
+
+  .labelOpenAmount {
+    color: #ff8c07;
+  }
+
+  .labelInvoiceNumber {
+    margin: 0;
+    white-space: normal;
+    font-size: 14px;
+    color: #3f4965;
+    word-break: break-all;
+  }
+
+  .labelStatus {
+    font-size: 12px;
+    color: #c5c5c5;
+  }
+
+  .labelDueDays {
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  .labelPaid {
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  .labelCol-2 {
+    vertical-align: top;
+    text-align: -webkit-right;
+    padding-right: 10px;
+    padding-left: 10px;
+    float: right;
+  }
+
+  .labelLineEdit {
+    font-size: 12px;
+    margin-right: 0px !important;
+    color: #c5c5c5;
+  }
+
+  .labelLineAmount {
+    font-size: 14px;
+    color: #3f4965;
+    min-width: 90px;
+  }
+
+  .item-md.item-block .item-inner {
+    padding-right: 0;
+  }
+
+  .labelCol-1 {
+    vertical-align: top;
+    width: 100%;
+  }
+
+  .buttonCol-3 {
+    border-left: 1px solid #dedede;
+    min-width: 59px;
+  }
+
+  .btn-more {
+    height: 48px;
+    width: 48px;
+    margin: 4px 5px 0 0;
+    float: right;
+    border-radius: 24px;
+  }
+
+  .divSubItem {
+    width: 100%;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .divSubItemRejected {
+    width: 100%;
+    padding-top: 14px;
+    padding-bottom: 18px;
+  }
+
+  .divItem {
+    display: inline-flex;
+    width: 100%;
+  }
+
+  .labelTitle {
+    padding-left: 12px;
+    margin-right: 5px;
+    margin: 0px;
+  }
+
+  .labelHeader {
+    margin-top: 20px;
+    font-weight: 500;
+    white-space: normal;
+  }
+
+  .labelSubHeader {
+    display: -webkit-inline-box;
+    width: 100%;
+  }
+
+  .redColor {
+    color: #f23842;
+  }
+
+  .orangeColor {
+    color: #ff8c07;
+  }
+
+  .orangeBG {
+    background-color: #ff8c07;
+  }
+
+  .greenColor {
+    color: #35b968;
+  }
+
+  .displayFlex {
+    display: flex;
+  }
+
+  .strike-label {
+    text-decoration: line-through;
+  }
+}

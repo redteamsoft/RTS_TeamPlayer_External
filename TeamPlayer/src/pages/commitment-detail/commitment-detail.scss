@@ -1,0 +1,390 @@
+page-commitment-detail {
+  .fab-md-in-list {
+    background-color: #ffffff;
+  }
+  .button-md-primary {
+    border-radius: 0px;
+  }
+  .item-profile {
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    height: 250px;
+  }
+
+  .item-detail {
+    width: 100%;
+    background: white;
+    position: absolute;
+  }
+
+  .info-quote {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .detail-padding {
+    padding: 10px 12px 30px 12px;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .detail-padding-bkwhite {
+    padding: 0px 12px 30px 12px;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .detail-padding-table {
+    padding: 15px 12px 15px 12px;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .ion-item-class {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+  }
+
+  .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus)
+    .item-inner,
+  .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus)
+    .item-inner {
+    border-bottom-color: #bce0fd;
+    -webkit-box-shadow: inset 0 -1px 0 0 #bce0fd;
+    box-shadow: inset 0 -1px 0 0 #bce0fd;
+  }
+
+  .item-md.item-input.item-input-has-focus .item-inner,
+  .item-md.item-input.input-has-focus .item-inner {
+    border-bottom-color: #ff8c07;
+    -webkit-box-shadow: inset 0 -1px 0 0 #ff8c07;
+    box-shadow: inset 0 -1px 0 0 #ff8c07;
+  }
+
+  .optionTools {
+    margin-left: -130px;
+    align-items: flex-end;
+    width: 180px;
+  }
+
+  .p_adjust {
+    margin-top: -12px;
+  }
+
+  .p_bold {
+    font-weight: 500;
+  }
+
+  .leftdiv_header {
+    width: 20px;
+  }
+
+  .middlediv_header {
+    width: 202px;
+    text-align: left;
+    color: #030404;
+    opacity: 0.5;
+    font-weight: 500;
+  }
+
+  .rightdiv_header {
+    width: 110px;
+    text-align: right;
+    color: #030404;
+    opacity: 0.5;
+    font-weight: 500;
+    padding-right: 8px;
+  }
+
+  .leftdiv_body {
+    width: 20px;
+    text-align: center;
+    color: #3f4965;
+  }
+
+  .middlediv_body {
+    width: 202px;
+    text-align: -webkit-auto;
+    color: #3f4965;
+  }
+
+  .rightdiv_body {
+    width: 110px;
+    text-align: right;
+    color: #3f4965;
+    padding-right: 8px;
+  }
+
+  .leftdiv_line {
+    width: 20px;
+  }
+
+  .middlediv_line {
+    width: 202px;
+    border-top: #dedede 1px solid;
+  }
+
+  .rightdiv_line {
+    width: 110px;
+    border-top: #dedede 1px solid;
+  }
+
+  .detailcontainer_line {
+    display: -webkit-box;
+    width: -webkit-stretch;
+  }
+
+  .detail-padding-table_line {
+    padding: 0 0 0 12px;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .leftdiv_total {
+    width: 180px;
+    color: #3f4965;
+  }
+
+  .rightdiv_total {
+    width: 150px;
+    text-align: right;
+    color: #3f4965;
+    padding-right: 8px;
+  }
+
+  .margin-top {
+    margin-top: 8px !important;
+  }
+
+  .margin-top-x3 {
+    margin-top: 24px !important;
+  }
+  .border-radio {
+    border: 1px solid #dedede;
+    border-radius: 6px;
+    margin-top: 48px;
+    margin-bottom: 56px;
+  }
+
+  .padding-col {
+    padding: 0;
+  }
+
+  .padding-0 {
+    padding: 0;
+  }
+
+  .padding-5 {
+    padding: 16px 0;
+  }
+
+  .row-header {
+    color: #808181;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .row-body {
+    line-height: 15px;
+    color: #3f4965;
+    font-size: 14px;
+    padding: 15px 0;
+  }
+
+  .col-number {
+    max-width: 36px;
+    margin-left: 8px;
+  }
+
+  .col-service-name {
+    margin: 0 10px 0 8px;
+  }
+
+  .col-scope {
+    max-width: 45px;
+  }
+
+  .col-amount {
+    max-width: 100px;
+    margin-right: 10px;
+  }
+
+  .row-line {
+    padding: 0;
+    border-bottom: 1px solid #dedede;
+    margin-right: 0;
+    margin-left: 52px;
+  }
+
+  .grid-summary {
+    border: 1px solid #dedede;
+    border-radius: 6px;
+    padding: 15px 9px 15px 9px;
+    font-size: 14px;
+    color: #3f4965;
+    margin-bottom: 56px;
+  }
+
+  .row-tax {
+    margin-top: 10px;
+  }
+  .row-valuetax {
+    margin-top: 14px;
+  }
+  .row-total {
+    margin-top: 20px;
+  }
+
+  .col-width-summary {
+    max-width: 114px;
+  }
+
+  .margin-0 {
+    margin: 0;
+  }
+
+  .margin-label-0 {
+    margin: 10px 0 0 0;
+  }
+
+  .font-12 {
+    font-size: 12px;
+  }
+
+  .font-weight-medium {
+    font-weight: 500;
+  }
+
+  .p-margin-0 {
+    margin-top: 0px;
+    margin-bottom: 2px;
+  }
+
+  .div-separate {
+    margin-top: 14px;
+    margin-bottom: 12px;
+  }
+
+  .div-mg-0 {
+    margin: 0;
+  }
+
+  .div-navegation {
+    max-width: 500px;
+    margin: auto;
+    padding-left: 12px;
+  }
+
+  .div-nav-height {
+    height: 32px;
+  }
+
+  .row-bcrump {
+    border-bottom: 1px solid #d7ecfe;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .div-lbl-customer {
+    display: inline-block;
+  }
+
+  .lbl-nav-customers {
+    font-weight: 400;
+    color: #488aff;
+    /*margin-right: 12px;*/
+    vertical-align: baseline;
+  }
+
+  .lbl-nav-arrow-left {
+    color: #3f4965;
+    /*margin-right: 3px;*/
+    vertical-align: middle;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .div-btn-nav {
+    display: inline-block;
+    margin-right:-2px;
+    margin-left: -2px;
+  }
+
+  .btn-active-more {
+    border-radius: 50%;
+    background-color: rgba(158, 158, 158, 0.2);
+  }
+
+  .btn-navegations {
+    height: 32px;
+    width: 32px;
+    margin: 0;
+    vertical-align: middle;
+  }
+
+  .lbl-nav-arrow-right {
+    color: #3f4965;
+    /*margin-left: 3px;*/
+    /*margin-right: 12px;*/
+    vertical-align: middle;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .div-lbl-contract {
+    display: inline-block;
+  }
+
+  .lbl-nav-contract {
+    font-weight: 400;
+    color: #488aff;
+    vertical-align: baseline;
+  }
+
+  .div-margin-auto {
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .div-padding {
+    padding: 10px 10px 25px 12px;
+  }
+
+  .bg-white {
+    background-color: white;
+  }
+
+  .bg-orange {
+    background-color: #ff8c07;
+  }
+
+  .p-mg {
+    margin: 0px;
+    margin-top: -12px;
+  }
+
+  .div-activated {
+    margin: auto;
+    margin-right: 10px;
+    text-align: right;
+    color: #3f4965;
+  }
+
+  .div-disabled {
+    margin: auto;
+    margin-right: 10px;
+    text-align: right;
+    color: #dedede;
+  }
+
+  .div-prod-padding {
+    padding: 24px 10px 24px 8px;
+  }
+}

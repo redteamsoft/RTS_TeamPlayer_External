@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'USERS_TITLE' | translate }}</ion-title>  
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">       
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>  
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" 
+                    [(ngModel)]="queryText"
+                    (ionInput)="updateLstUsers()"
+                    placeholder="{{ 'PLACE_HOLDER_SEARCH' | translate }}">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header> 
+<ion-content class="content-background">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="{{ 'PULLING_TEXT' | translate }}"
+      refreshingSpinner="dots"
+      refreshingText="{{ 'REFRESHING_TEXT' | translate }}"
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-list> 
+    <ion-item-group *ngFor="let item of currentItems" [hidden]="item.hide">
+      <ion-item-divider color="light" [hidden]="item.groupHide" style="padding-left: 27px;border: none;">{{item.DiaplsyOrder}}</ion-item-divider>    
+      <ion-item (click)="openItem(item)" class="border-list" [ngStyle]="{'border-left':item.InvitationStatus === 'Invited' ? '2px solid #ffffff' : '' }" style="margin-left: 8px; margin-right: 8px;">
+        <ion-avatar item-start> 
+          <button class="blue-light-circle-background">
+            <span class="avatardarkletters">{{item.uAvatarLetter}}</span>
+          </button>
+        </ion-avatar>
+        <ion-label style="font-size: small;"> 
+        <h2 style="color: #3F4965;">{{item.FirstName}} {{item.LastName}}</h2> 
+        <ion-note style="font-size: 13px;" item-end *ngIf="item.Position">{{item.Position}}</ion-note>
+      </ion-label> 
+      </ion-item>    
+    </ion-item-group>  
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="{{ 'INFINITE_LOADING_TEXT' | translate }}">        
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> 
+</ion-content>

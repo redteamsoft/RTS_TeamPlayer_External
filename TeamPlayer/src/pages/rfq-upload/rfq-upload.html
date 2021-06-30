@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'UPLOAD_QUOTE' | translate }}</ion-title> 
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">       
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content> 
+    <ion-list>
+      <div class="detail-padding" style="padding-bottom: 25px;"> 
+        <div>
+          <span class="info-quote">{{ 'QUOTE_INFORMATION' | translate }}:</span>
+        </div> 
+
+        <div style="padding-top:25px;" > 
+          <div class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'CUSTOMER_LABEL' | translate }}:</p> </div>
+            <div class="rigthdiv"><p style="font-weight: 500;">{{ customer._customername }} </p></div>
+          </div>
+          <div class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'PROJECT_LABEL' | translate }}:</p> </div>
+            <div class="rigthdiv">
+                <p *ngIf="project._projectscope == 00">{{ project._projectname }}</p> 
+                <p style="margin: 0px;margin-top: -12px;" *ngIf="project._projectscope == 00">{{ project._rtProjNum }}</p> 
+                <p style="margin: 0px;margin-top: -12px;" *ngIf="project._projectscope != 00">{{ project._rtProjNum }} - {{ project._rtScopeNum }}</p>
+            </div>
+          </div>
+          <div class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'BID_PACKAGE_LABEL' | translate }}:</p> </div>
+            <div class="rigthdiv"><p>{{ transaction._subject }} </p></div>
+          </div> 
+        </div> 
+       </div>
+
+      <div class="form-padding"> 
+        <ion-item class="ion-item-class">
+          <ion-label style="padding-left: 10px;" floating>{{ 'QUOTE_NUMBER_LABEL' | translate }}<span style="color: #FF8C07" *ngIf="!profileisDisabled"> *</span></ion-label>
+          <ion-input  style="padding-left: 10px;" [(ngModel)]="rfqupload.quotenumber" name="quotenumber" required></ion-input>
+        </ion-item>  
+        <ion-item class="ion-item-class">
+          <ion-label style="padding-left: 10px;" floating>{{ 'BID_LABEL' | translate }}<span style="color: #FF8C07" *ngIf="!profileisDisabled"> *</span></ion-label>
+          <ion-input style="padding-left: 10px;" type="number" [(ngModel)]="rfqupload.amount" name="amount" required></ion-input>
+        </ion-item>  
+        <br><br>
+        <div style="padding-left: 20px;">
+           <div *ngIf="showAssemblies">
+            <div>
+              <span class="info-include-quote">{{ 'ITEMS_INCLUDE_QUOTE' | translate }}:</span>
+            </div>
+            <br><br>        
+            <div>
+              <span class="info-quote">{{QuoteAssemblyDesc}}</span>
+            </div>
+            <ion-list> 
+              <ion-item-sliding *ngFor="let itemc of currentItems">
+                <ion-item *ngIf="itemc.DisplayOrder == '1'" id="itemssection" style="padding-right: 0px;"> 
+                  <ion-label>
+                    <h2 style="font-size: 17px;">{{itemc.ItemTitle}}</h2>
+                    <!--p>{{item.ProjectID}} - {{item.Scope}}</p-->
+                    <p>{{itemc.ItemName}}</p> 
+                    <!--ion-note item-end >{{item.Status}}</ion-note-->
+                  </ion-label>
+                  <ion-checkbox (ionChange)="updateQALst(itemc)" checked="false"></ion-checkbox> 
+                </ion-item>
+              </ion-item-sliding>
+            </ion-list>
+          </div> 
+          <div class="div-quote-valid"> 
+            <div class="quotevalid-left-section"><p style=" padding-left: 10px;margin-top: 23px;color:#797D80;">{{ 'QUOTE_VALID_FOR_LABEL' | translate }}</p></div>
+            <div style="display: -webkit-inline-box;float: right; height: 67px;">
+              <ion-item id="quotevalid" class="ion-item-class" style="width: 75px;height: 35px;min-height: 25px; margin-top: 16px;"> 
+              <ion-input type="number" [(ngModel)]="rfqupload.days" name="days" id="days" ></ion-input> 
+            </ion-item> 
+            <div class="quotevalid-right-section"><p style="margin-top: 23px;">{{ 'DAYS_LABEL' | translate }}</p></div>
+            </div>
+          </div> 
+          <ion-item style="padding-left: 0px;margin-left: -10px;padding-right: 0px;height: 67px;">
+            <ion-label style="padding-left: 10px;font-size: 17px;color:#797D80;">{{ 'PAYMENT_TERMS_LABEL' | translate }}</ion-label>
+            <ion-select [(ngModel)]="rfqupload.ptid" (ngModelChange)="setOptionsFn();" >
+              <ion-option *ngFor="let itempt of currentItemsPT" [value]="itempt.PTid"  style="background: rgba(241,249,255,0.5);color: #3F4965;">{{itempt.PTname}}</ion-option> 
+            </ion-select>
+          </ion-item> 
+           <ion-item class="ion-item-class" style="padding-left: 0px;margin-left: -10px; height: 145px;padding-right: 0px;">
+            <ion-label style="padding-left: 10px; padding-top: 4px; z-index: 1;" stacked>{{ 'NOTES_LABEL' | translate }}</ion-label>
+            <ion-textarea rows="4" style="padding-left: 10px; padding-top: 5px;" [(ngModel)]="rfqupload.notes" name="notes"></ion-textarea>
+          </ion-item>  
+          <br> 
+        </div>
+        <div  class="btn-padding"> 
+           <button ion-button color="primary" (click)="SubmitQuoteProcess()" block>{{ 'BTN_SUBMIT' | translate }}</button> 
+        </div>
+      </div>
+    </ion-list> 
+</ion-content>

@@ -1,0 +1,138 @@
+page-modal-page-retainage {
+  .scroll-content {
+    padding: 16px 8px 16px 8px !important;
+  }
+
+  .grid {
+    background-color: #fff;
+  }
+
+  .rowFixed {
+    padding: 16px 10px 16px 20px;
+    height: 57px;
+  }
+
+  .rowLine {
+    border-bottom: 1px solid #dedede;
+  }
+
+  .buttonFixed {
+    padding: 0;
+    margin: 0;
+    text-transform: none;
+    font-weight: normal;
+    font-size: 12px;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .labelFixed {
+    vertical-align: -webkit-baseline-middle;
+    padding-right: 10px;
+  }
+
+  .bar-buttons-md[left] {
+    margin: 0px 6px 0px 6px;
+    padding: 0px 5px 0px 5px;
+  }
+
+  .button-effect {
+    display: none !important;
+  }
+
+  .toolbar-title-md {
+    color: #030404 !important;
+    text-align: left;
+  }
+
+  .content-md {
+    background-color: #ebebeb;
+    color: #030404;
+    font-size: 14px !important;
+  }
+
+  .text-input-md {
+    margin: 0px 0px 0px 0px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .styleInput .item-inner {
+    border: 1px solid #bce0fd !important;
+    font-size: 14px;
+    padding-right: 9px !important;
+  }
+
+  .styleInput .input-cover {
+    display: none;
+  }
+
+  .styleInput {
+    border-bottom-color: transparent !important;
+    -webkit-box-shadow: inset 0 0px 0 0 transparent !important;
+    box-shadow: inset 0 0px 0 0 transparent !important;
+    min-height: 3rem;
+    margin: 0;
+  }
+
+  .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+  .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border-bottom-color: transparent;
+    -webkit-box-shadow: inset 0 -1px 0 0 transparent;
+    box-shadow: inset 0 0 0 0 transparent;
+  }
+
+  .styleInputReadOnly {
+    border-bottom-color: transparent !important;
+    -webkit-box-shadow: inset 0 0px 0 0 transparent !important;
+    box-shadow: inset 0 0px 0 0 transparent !important;
+    min-height: 3rem;
+    margin: 0;
+    font-size: 14px;
+    width: 135px;
+    float: right;
+  }
+
+  .styleInputReadOnly .item-inner {
+    border: 0 !important;
+    background-color: #fffb7f;
+    padding-right: 10px !important;
+  }
+
+  .item-md.item-input.item-input-has-focus .item-inner,
+  .item-md.item-input.input-has-focus .item-inner {
+    border-color: #ff8c07 !important;
+    -webkit-box-shadow: inset 0 0 0 0 #ff8c07 !important;
+    box-shadow: inset 0 0 0 0 #ff8c07 !important;
+  }
+
+  .font-size-18 div {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .grid-1 {
+    padding: 0;
+  }
+
+  .col-grid-1 {
+    padding: 0;
+  }
+
+  .width-1 {
+    width: 70px;
+    float: right;
+    margin-right: 20px;
+  }
+
+  .width-2 {
+    width: 105px;
+    float: right;
+  }
+
+  .text-input-ios {
+    margin: 0;
+  }
+}

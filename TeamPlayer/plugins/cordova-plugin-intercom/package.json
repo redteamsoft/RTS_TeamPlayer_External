@@ -1,0 +1,71 @@
+{
+  "_from": "cordova-plugin-intercom@7.1.0",
+  "_id": "cordova-plugin-intercom@7.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-ko8kD1wEJbOxomVtyx1G21VosQpXQVlEfewSG0SsFyY0FlZAHGUMDr1c96DA++NswUSGiAJWRv86Tat7ahyfpA==",
+  "_location": "/cordova-plugin-intercom",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-intercom@7.1.0",
+    "name": "cordova-plugin-intercom",
+    "escapedName": "cordova-plugin-intercom",
+    "rawSpec": "7.1.0",
+    "saveSpec": null,
+    "fetchSpec": "7.1.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-intercom/-/cordova-plugin-intercom-7.1.0.tgz",
+  "_shasum": "1264032218d0f7be26961cec21635b796a10ac27",
+  "_spec": "cordova-plugin-intercom@7.1.0",
+  "_where": "E:\\Projects\\RTS_TeamPlayer\\TeamPlayer",
+  "author": {
+    "name": "Intercom"
+  },
+  "bugs": {
+    "url": "https://github.com/intercom/intercom-cordova/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-intercom",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Official Cordova/PhoneGap plugin for Intercom",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=9.0.0"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=8.0.0"
+    },
+    {
+      "name": "cordova-ios",
+      "version": ">=5.0.0"
+    }
+  ],
+  "homepage": "https://github.com/intercom/intercom-cordova#readme",
+  "keywords": [
+    "intercom",
+    "intercom-cordova",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "MIT License",
+  "name": "cordova-plugin-intercom",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intercom/intercom-cordova.git"
+  },
+  "version": "7.1.0"
+}

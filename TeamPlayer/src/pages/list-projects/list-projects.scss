@@ -1,0 +1,54 @@
+page-list-projects {
+	 .list-md .item-block .item-inner {
+		height: 90px;
+		padding-right: 0px;
+	}
+	.item-md.item-block .item-inner {		
+		border-bottom: 1px solid #dedede;  
+	}
+
+	.item-block {
+		opacity: 1;
+	}
+	.border-list .label-md{
+		margin-right: 0px;
+	}
+	.divItem {
+		display: inline-flex;
+		width: 100%;
+	  }
+	.divItemLeft{
+		width: 100%;
+		//float: left;
+	}
+	.divItemRight{		
+		min-width: 59px;
+		transform: translateX(12px);
+	}
+	.displayFlex {
+		display: flex;
+	}
+	.projectButton{
+		background-color: #FFFFFF00;
+		text-align: left;
+		width: 100%;
+		min-height: 90px;
+		h2{
+			margin-bottom: 1px;
+			color: #3f4965;
+			white-space: initial;
+		}
+		p{
+			font-size: 13px;
+			white-space: normal;
+			color: #666;
+		}
+	}
+	.btnProject-more{		
+		height: 48px;
+		width: 48px;
+		float: right;
+		border-radius: 24px;
+	}
+	
+}

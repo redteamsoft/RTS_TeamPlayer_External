@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!submitted">{{ 'REQUEST_FOR_QUOTE' | translate }}</ion-title>
+    <ion-title *ngIf="submitted">{{ 'QUOTE' | translate }}</ion-title>
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">       
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content> 
+  <ion-list>
+    <div class="statusHeader">
+        <p>{{ 'STATUS_LABEL' | translate }}: <font style="font-weight: 500;">{{transaction._status}}</font> </p>  
+    </div> 
+    <div style="padding: 10px 10px 25px 12px;">
+        <span *ngIf="!submitted" class="info-quote">{{ 'RFQ_HEADER' | translate }}:</span>
+        <span *ngIf="submitted" class="info-quote">{{ 'QUOTE_HEADER' | translate }}:</span>
+    </div> 
+    <div style="background-color: white;">
+      <div id="firstcontainer" class="detail-padding" > 
+        <div class="detailcontainer">
+          <div class="leftdiv"><p>{{ 'CUSTOMER_LABEL' | translate }}:</p> </div>
+          <div class="rigthdiv">
+
+            <p style="font-weight: 500;">{{ customer._customername }} </p>
+ 
+              <p style="margin: 0px;margin-top: -12px;" *ngIf="transaction._requester != null && transaction._position == ''">{{ transaction._requester }}</p> 
+              <p style="margin: 0px;margin-top: -12px;" *ngIf="transaction._requester != null && transaction._position != ''">{{ transaction._requester }}, {{ transaction._position }}</p>
+
+          </div>
+        </div>
+        <div class="detailcontainer">
+          <div class="leftdiv"><p>{{ 'PROJECT_LABEL' | translate }}:</p> </div>
+          <div class="rigthdiv">
+              <p *ngIf="project._projectscope == 00">{{ project._projectname }}</p> 
+              <p style="margin: 0px;margin-top: -12px;" *ngIf="project._projectscope == 00">{{ project._rtProjNum }}</p> 
+              <p style="margin: 0px;margin-top: -12px;" *ngIf="project._projectscope != 00">{{ project._rtProjNum }} - {{ project._rtScopeNum }}</p>
+          </div>
+        </div>
+        <div class="detailcontainer">
+          <div class="leftdiv"><p>{{ 'BID_PACKAGE_LABEL' | translate }}:</p> </div>
+          <div class="rigthdiv"><p>{{ transaction._subject }} </p></div>
+        </div>
+        <div *ngIf="!submitted" class="detailcontainer">
+          <div class="leftdiv"><p>{{ 'DUE_DATE_LABEL' | translate }}:</p> </div>
+          <div class="rigthdiv"><p style="color:#FF8C07">{{ transaction._transactionduedate }} </p></div>
+        </div> 
+        <div *ngIf="submitted"   class="detailcontainer">
+          <div class="leftdiv"><p>{{ 'DATE_LABEL' | translate }}:</p> </div> 
+          <div class="rigthdiv"><p>{{ transaction._submitteddate }} &nbsp;&nbsp;<font *ngIf="latedatesdif" style="color: #f44336">{{ transaction._datesdif }} </font><font *ngIf="!latedatesdif" style="color: #35B968">{{ transaction._datesdif }} </font></div>
+        </div>
+
+
+        <div *ngIf="submitted" class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'AMOUNT_LABEL' | translate }} ({{project._rtMonetarySymbol}}):</p> </div>
+            <div class="rigthdiv"><p> {{ QuoteAmount | number:'1.2-2'}}</p></div>
+        </div> 
+
+
+        <div *ngIf="submitted && FileName != '' && ViewPremiumContent" class="btn-padding">
+          <button ion-button class="btn-confirm" color="primary" (click)="openQuoteAttachment()" block>{{ 'VIEW_QUOTE' | translate }}</button>
+        </div>
+      </div>
+     </div> 
+      
+       <div *ngIf="moredetails && submitted" style="padding: 40px 10px 25px 12px;">
+        <span class="info-quote">{{ 'REQUEST_FOR_QUOTE' | translate }}</span> 
+    </div> 
+
+        <div *ngIf="moredetails"    [ngClass]="submitted ? 'detail-padding': 'detail-padding-bkwhite'"> 
+
+           <div *ngIf="submitted" class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'DUE_DATE_LABEL' | translate }}:</p> </div>
+            <div class="rigthdiv"><p>{{ transaction._transactionduedate }} </p></div>
+          </div> 
+
+          <div *ngIf="RequestTime != ''" class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'DUE_TIME_LABEL' | translate }}:</p> </div>
+            <div class="rigthdiv">
+              <p style="color:#FF8C07" *ngIf="transaction._transactiontype == 'RFQ'">{{ RequestTime }} </p>
+              <p *ngIf="transaction._transactiontype == 'Quote'">{{ RequestTime }} </p>
+            </div>
+          </div> 
+          <div *ngIf="Locations != '' || LocationAddress != ''" class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'LOCATION_LABEL' | translate }}:</p> </div>
+            <div class="rigthdiv">
+              <p *ngIf="Locations != ''">{{ JobLocation }} </p>
+              <p *ngIf="LocationAddress != ''" style="margin-top: -10px;">{{LocationAddress}}</p> 
+            </div>
+          </div>  
+          <div *ngIf="Description != ''" class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'DESCRIPTION_LABEL' | translate }}:</p> </div>
+            <div class="rigthdiv"><p>{{ Description }} </p></div>
+          </div> 
+          <div *ngIf="Constraints != ''" class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'CONSTRAINTS_LABEL' | translate }}:</p> </div>
+            <div class="rigthdiv"><p>{{ Constraints }} </p></div>
+          </div> 
+          <div *ngIf="Instructions != ''" class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'INSTRUCTIONS_LABEL' | translate }}:</p> </div>
+            <div class="rigthdiv"><p>{{ Instructions }} </p></div>
+          </div>
+          <div *ngIf="RFQFileDescription != ''" class="detailcontainer">
+            <div class="leftdiv"><p>{{ 'ATTACHMENT' | translate }}:</p> </div>
+            <div class="rigthdiv"><p> {{ RFQFileDescription }} </p></div>
+          </div> 
+          <img *ngIf="RFQFileName != ''" (click)="openRFQAttachment()" src="assets/imgs/pdf.png" alt="attachment" style="width: 100px;padding-left: 13px">
+          
+ 
+        </div>  
+       
+  </ion-list> 
+</ion-content>
+
+<ion-fab right bottom #fab (click)="activeMenuBK()">
+  <button ion-fab style="background-color: #FF8C07;"><ion-icon name="md-arrow-dropup"></ion-icon></button>
+  <ion-fab-list side="top" id="floatmenu" style="margin-left: -80px;align-items: flex-end;">      
+    <div style="display: flex;" (click)="fabaction('viewrfq', fab, transaction)">
+      <div *ngIf="ViewPremiumContent" style="margin: auto;margin-right: 10px;text-align: right;color: #3F4965;">{{ 'BTN_VIEW_RFQ' | translate }}</div>
+      <div *ngIf="!ViewPremiumContent" style="margin: auto;margin-right: 10px;text-align: right;color: #DEDEDE;">{{ 'BTN_VIEW_RFQ' | translate }}</div>
+      <div>
+        <button ion-fab>
+          <ion-icon *ngIf="ViewPremiumContent" name="ios-eye-outline"></ion-icon>
+          <ion-icon *ngIf="!ViewPremiumContent" style="color:#DEDEDE" name="ios-eye-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div style="display: flex;" (click)="fabaction('planroom', fab, transaction)">
+      <div *ngIf="!ContentDisabled" style="margin: auto;margin-right: 10px; text-align: right;color: #3F4965;">Planroom</div>
+      <div *ngIf="ContentDisabled" style="margin: auto;margin-right: 10px;text-align: right;color: #DEDEDE;">Planroom</div>
+      <div>
+        <button ion-fab>
+          <ion-icon *ngIf="!ContentDisabled" name="ios-paper-outline"></ion-icon>
+          <ion-icon *ngIf="ContentDisabled" style="color:#DEDEDE" name="ios-paper-outline"></ion-icon>
+        </button>
+      </div>
+    </div> 
+    <div style="display: flex;" (click)="fabaction('moredetails', fab, transaction)">
+      <div *ngIf="!moredetails && !ContentDisabled" style="margin: auto;margin-right: 10px; text-align: right;color: #3F4965;">{{ 'MORE_DETAILS' | translate }}</div>
+      <div *ngIf="moredetails && !ContentDisabled" style="margin: auto;margin-right: 10px; text-align: right;color: #3F4965;">{{ 'HIDE_DETAILS' | translate }}</div>
+      <div *ngIf="ContentDisabled" style="margin: auto;margin-right: 10px;text-align: right;color: #DEDEDE;">{{ 'MORE_DETAILS' | translate }}</div>
+      <div>
+        <button ion-fab>
+          <ion-icon *ngIf="!ContentDisabled" name="ios-list-outline"></ion-icon>
+          <ion-icon *ngIf="ContentDisabled" style="color:#DEDEDE" name="ios-list-outline"></ion-icon>
+        </button>
+      </div>
+    </div> 
+    <div>      
+      <div *ngIf="!submitted && RFQStatus == 'Committed' && !ContentDisabled" style="display: flex;" (click)="fabaction('uploadquote', fab, transaction)" [hidden]="btnAccessQuote">
+        <div style="margin: auto;margin-right: 10px;   text-align: right;color: #FF8C07;">{{ 'UPLOAD_QUOTE' | translate }}</div> 
+        <div>
+          <button ion-fab><ion-icon name="ios-paper-plane-outline"></ion-icon></button>
+        </div>
+      </div>
+      <div *ngIf="submitted || ContentDisabled" style="display: flex;" (click)="fabaction('', fab, transaction)" [hidden]="btnAccessQuote">
+        <div style="margin: auto;margin-right: 10px;text-align: right;color: #DEDEDE;">{{ 'UPLOAD_QUOTE' | translate }}</div> 
+        <div>
+          <button ion-fab style="color:#DEDEDE"><ion-icon name="ios-paper-plane-outline"></ion-icon></button>
+        </div>
+      </div>
+    </div> 
+  </ion-fab-list>
+</ion-fab>
+<div id="bkmenu" class="backgroundFloatMenu" (click)="activeMenuBK(fab)"></div>

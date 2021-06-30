@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>{{ 'WAIVERS_TITLE' | translate }}</ion-title>
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{ 'PULLING_TEXT' | translate }}"
+      refreshingSpinner="dots" refreshingText="{{ 'REFRESHING_TEXT' | translate }}"></ion-refresher-content>
+  </ion-refresher>
+  <div class="labelHeader">
+    <div class="labelSubHeader">
+      <div>
+        <ion-label class="labelTitle">{{ 'COMMITMENT_LABEL' | translate }}:
+        </ion-label>
+      </div>
+      <div style="padding-left: 5px">
+        <ion-label class="labelProjectDescription">
+          {{ lblTransactionNumber }} - {{ lblProjectName }}</ion-label>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <ion-list style="margin-bottom: 66px;">
+    <ion-item-sliding *ngFor="let item of currentItems" [hidden]="item.hide">
+      <div ion-item class="border-list">
+        <ion-label style="margin: 0;">
+          <div class="divItem">
+            <div (click)="openItem(item)" class="divSubItem">
+              <div class="displayFlex">
+                <div class="labelCol-1">
+                  <div class="lbl-claimant">{{ item.Claimant }}</div>
+                </div>
+              </div>
+              <div class="displayFlex mg-top3">
+                <div class="labelCol-1">
+                  <div class="lbl-standing">{{ item.Standing }}</div>
+                </div>
+              </div>
+              <div *ngIf="item.Exposure != ''" class="displayFlex mg-top5">
+                <div class="labelCol-1" style="height: 17px;">
+                  <div class="lbl-exposure">{{ 'WAIVERS_EXPOSURE' | translate }}:</div>
+                  <div class="value-exposure">{{ item.Exposure }}</div>
+                </div>
+              </div>
+              <div *ngIf="item.Release || item.Basis != ''" class="displayFlex mg-top5">
+                <div *ngIf="item.Release" class="labelCol-1 div-release" style="height: 17px;">
+                  <div class="lbl-release">{{ 'WAIVERS_RELEASE' | translate }}:</div>
+                  <div class="value-release">{{ item.Release }}</div>
+                </div>
+                <div *ngIf="item.Basis != ''" class="labelCol-1" style="height: 17px;">
+                  <div class="lbl-basis">{{ 'WAIVERS_BASIS' | translate }}:</div>
+                  <div class="value-basis">{{ item.Basis }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-label>
+      </div>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

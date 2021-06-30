@@ -1,0 +1,67 @@
+<!--
+  Generated template for the ListProjectTeamProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'PROJECT_TEAM_MEMBER_TITLE' | translate }}</ion-title>
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">       
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="display: table;margin-left: auto;margin-right: auto;padding-top: 30px;">
+    <div style="display: -webkit-box;" >
+      <div style="text-align: -webkit-center;padding: 0px 24px 0px 24px;max-width: 500px;margin: auto">
+        <button class="orange-circle-profle">
+          <span class="avatarletters">{{profilePic_tp | uppercase}}</span>
+        </button>
+        <p class="profile-name">{{FirstName_tp}} {{LastName_tp}}</p>
+        <p class="profile-desc" *ngIf="Position_tp">{{Position_tp}} at {{CompanyName_tp}}</p>
+        <div *ngIf="ProjectTeamId != null">
+          <p class="profile-addedby" *ngIf="LevelAccess_tp == 'Added' && LevelAccess_tp != Hidden; else invitedBy">{{ 'PROJECT_TEAM_ADDED_LABEL' | translate}} {{inv_FirstName_tp}} {{inv_LastName_tp}}</p>
+            <ng-template #invitedBy>
+              <p class="profile-invitation" *ngIf="LevelAccess_tp != 'Hidden' && TeamAddedDate_tp != null">{{ 'PROJECT_TEAM_INVITED_LABEL' | translate}} on {{TeamAddedDate_tp | date: 'MM/dd/yyyy' : 'utc'}}</p>
+            </ng-template>
+          <div class="checkbox-container">
+            <p class="profile-access" *ngIf="TeamInvitedDate_tp != null;"><ion-checkbox (ionChange)="checkEvent($event)" [checked]="checked" class="ptMember-checkbox"></ion-checkbox>Full Access to Project</p>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+
+  <ion-list> 
+    <div class="profile-padding" id="profileform"> 
+      <ion-item class="input-style">
+        <ion-label floating>{{ 'FIRST_NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="FirstName_tp" name="FirstName_tp" value="" disabled="true"></ion-input>
+      </ion-item>
+      <ion-item class="input-style">
+        <ion-label floating>{{ 'LAST_NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="LastName_tp" name="LastName_tp" value="" disabled="true"></ion-input>
+      </ion-item> 
+      <ion-item class="input-style">
+        <ion-label floating>{{ 'POSITION' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="Position_tp" name="Position_tp" value="" disabled="true"></ion-input>
+      </ion-item>
+      <ion-item class="input-style">
+        <ion-label floating>{{ 'MOBILE' | translate }}</ion-label>
+        <ion-input type="tel" [(ngModel)]="Mobile_tp" name="Mobile_tp" value="" disabled="true"></ion-input>
+      </ion-item>
+      <ion-item class="input-style">
+        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="Email_tp" name="Email_tp" value="" disabled="true"></ion-input>
+      </ion-item>
+      <br>
+    </div>
+  </ion-list>
+
+</ion-content>

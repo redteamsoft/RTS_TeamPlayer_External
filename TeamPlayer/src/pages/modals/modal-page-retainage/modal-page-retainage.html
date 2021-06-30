@@ -1,0 +1,127 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="white">
+    <ion-buttons left>
+      <button (click)="cancelModal()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="font-size-18">{{ 'BILL_RETAINAGE_LABEL' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid-1">
+    <ion-row class="rowFixed">
+      <ion-col text-left class="col-grid-1">
+        <button type="button" (click)="ToolTip(BILL_RETAINAGE_CONTRACT_VALUE_WARNING)" ion-button clear small
+          class="buttonFixed">
+          {{'BILL_RETAINAGE_CONTRACT_VALUE' | translate}}
+        </button>
+      </ion-col>
+      <ion-col text-right class="col-grid-1">
+        <label class="labelFixed">{{TotalContractValue | number:'1.2-2'}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rowLine"></ion-row>
+    <ion-row class="rowFixed">
+      <ion-col text-left class="col-grid-1">
+        <button type="button" (click)="ToolTip(BILL_RETAINAGE_PRIOR_BILLING_WARNING)" ion-button clear small
+          class="buttonFixed">
+          {{'BILL_RETAINAGE_PRIOR_BILLING' | translate}}
+        </button>
+      </ion-col>
+      <ion-col text-right class="col-grid-1">
+        <label class="labelFixed">{{TotalPriorBilling | number:'1.2-2'}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rowLine"></ion-row>
+    <ion-row class="rowFixed">
+      <ion-col text-left class="col-grid-1">
+        <button type="button" (click)="ToolTip(BILL_RETAINAGE_THIS_PERIOD_WARNING)" ion-button clear small
+          class="buttonFixed bold">
+          {{'BILL_RETAINAGE_THIS_PERIOD' | translate}}
+        </button>
+      </ion-col>
+      <ion-col text-right class="col-grid-1">
+        <label class="labelFixed bold">{{ThisPeriodBilling | number:'1.2-2'}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rowLine"></ion-row>
+    <ion-row class="rowFixed">
+      <ion-col text-left class="col-grid-1">
+        <button type="button" (click)="ToolTip(BILL_RETAINAGE_COMPLETED_STORED_WARNING)" ion-button clear small
+          class="buttonFixed">
+          {{'BILL_RETAINAGE_COMPLETED_STORED' | translate}}
+        </button>
+      </ion-col>
+      <ion-col text-right class="col-grid-1">
+        <label class="labelFixed">{{TotalCompletedStored | number:'1.2-2'}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rowLine"></ion-row>
+    <ion-row class="rowFixed">
+      <ion-col text-left class="col-grid-1">
+        <button type="button" (click)="ToolTip(BILL_RETAINAGE_PRIOR_RETAINAGE_WARNING)" ion-button clear small
+          class="buttonFixed">
+          {{'BILL_RETAINAGE_PRIOR_RETAINAGE' | translate}}
+        </button>
+      </ion-col>
+      <ion-col text-right class="col-grid-1">
+        <label class="labelFixed">{{PriorRetainage | number:'1.2-2'}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rowLine"></ion-row>
+    <ion-row class="rowFixed">
+      <ion-col text-left class="col-grid-1">
+        <button type="button" (click)="ToolTip(BILL_RETAINAGE_TOTAL_RETAINAGE_WARNING)" ion-button clear small
+          class="buttonFixed">
+          {{'BILL_RETAINAGE_TOTAL_RETAINAGE' | translate}}
+        </button>
+      </ion-col>
+      <ion-col class="col-grid-1">
+        <ion-item class="styleInput width-1">
+          <ion-input type="tel" (ionBlur)="onChangePercent(oldValue)" [(ngModel)]="TotalRetainagePercent"
+            (ionFocus)="oldValue = onFocusPercent()" (click)="$event.target.select()" text-right
+            (keydown)="runKeyDown($event)" [readonly]="RetainageReadOnly"> 
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col class="col-grid-1">
+        <ion-item class="styleInput width-2">
+          <ion-input type="tel" (ionBlur)="onChangeValue(oldValue)" [(ngModel)]="TotalRetainage"
+            (ionFocus)="oldValue = TotalRetainage" (click)="$event.target.select()" text-right
+            (keydown)="runKeyDown($event)" [readonly]="RetainageReadOnly">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rowLine"></ion-row>
+    <ion-row class="rowFixed">
+      <ion-col text-left class="col-grid-1">
+        <button type="button" (click)="ToolTip(BILL_RETAINAGE_CURRENT_RETAINAGE_WARNING)" ion-button clear small
+          class="buttonFixed">
+          {{'BILL_RETAINAGE_CURRENT_RETAINAGE' | translate}}
+        </button>
+      </ion-col>
+      <ion-col class="col-grid-1">
+        <ion-item class="styleInputReadOnly">
+          <ion-input type="tel" [(ngModel)]="CurrentRetainage" text-right readonly>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer style="display: inline-flex;">
+  <button (click)="cancelModal()" style="height: 56px;" ion-button full outline
+    icon-start>{{'BILL_BTN_CANCEL' | translate}}</button>
+  <button (click)="confirmModal()" style="height: 56px;" ion-button full
+    icon-start>{{'BILL_BTN_SAVE' | translate}}</button>
+</ion-footer>

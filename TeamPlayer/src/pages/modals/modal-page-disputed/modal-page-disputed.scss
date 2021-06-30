@@ -1,0 +1,127 @@
+page-modal-page-disputed {
+    .font-size-18 div {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .bar-buttons-md[left] {
+        margin: 0px 6px 0px 6px;
+        padding: 0px 5px 0px 5px;
+    }
+
+    .toolbar-title-md {
+        color: #030404 !important;
+        text-align: left;
+    }
+
+    .content-md {
+        background-color: #ebebeb;
+        color: #030404;
+    }
+
+    .grid-detail {
+        padding: 0 8px;
+    }
+
+    .lbl-costcode {
+        font-size: 14px;
+        font-weight: 500;
+        color: #000000;
+        white-space: normal;
+        margin: 0 0 14px 0;
+    }
+
+    .lbl-light {
+        font-size: 14px;
+        font-weight: 300;
+        color: #797d80;
+        max-width: fit-content;
+        margin: 0 4px 6px 0;
+    }
+
+    .lbl-bold {
+        font-size: 14px;
+        font-weight: 500;
+        color: #000000;
+        margin: 0 0 6px 0;
+    }
+
+    .lbl-status {
+        font-size: 14px;
+        font-weight: 300;
+        color: #000000;
+    }
+
+    .lbl-amount {
+        margin: 0 0 6px 0;
+    }
+
+    .lbl-author {
+        white-space: normal;
+        margin: 0 0 6px 0;
+    }
+
+    .spn-author {
+        font-size: 14px;
+        font-weight: 500;
+        color: #000000;
+    }
+
+    .spn-title {
+        font-size: 14px;
+        font-style: italic;
+        color: #000000;
+    }
+
+    .scroll-content {
+        padding: 16px 8px !important;
+    }
+
+    .lbl-comment {
+        font-size: 12px;
+        font-weight: 500;
+        color: #8f8f8d;
+        margin: 0;
+    }
+
+    .txt-comment {
+        font-size: 17px;
+        font-weight: 400;
+        color: #444444;
+        margin: 6px 0 0 0;
+        width: 100%;
+        border: none;
+        height: 58px;
+        resize: none;
+        padding: 0px;
+    }
+
+    .text-input-md {
+        margin: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    textarea {
+        overflow: hidden;
+        white-space: break-spaces;
+    }
+
+    .grid-comments {
+        background-color: white;
+        padding: 7px 16px 28px 16px;
+        margin-top: 10px;
+    }
+
+    .btn-close {
+        font-size: 16px;
+        color: #2d2f2e;
+        height: 56px;
+        text-transform: capitalize;
+        margin-top: 0;
+    }
+
+    ion-footer {
+        display: inline-flex;
+    }
+}

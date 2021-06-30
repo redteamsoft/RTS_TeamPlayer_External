@@ -1,0 +1,178 @@
+page-list-project-team-add {
+    .toolbar {
+        min-height: 60px !important;
+    }
+    .item-block{
+        border-bottom: 1px solid #DEDEDE !important;
+        margin-right: 8px !important;
+        width: auto;
+     }
+    .title {
+        padding-right: 0px !important;
+        font-size: 18px !important;
+    }
+    .toolbar-background {
+        background-color: #ffffff;     
+    }
+    .toolbar-title {
+       color: #000000;
+       text-align: left;
+       font-size: 18px;
+       padding: 0px !important;
+    }
+    .header-md::after {
+        display: none;
+    }
+    .scroll-content {
+        padding: 0px !important;
+    }
+    .searchbar { 
+        background-color: #FFFFFF;
+        height: 64px !important;
+        padding: 11px 16px !important;
+    }
+    .searchbar-input {
+        height: 42px !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 2px solid #CCCCCC;
+        border-radius: 4px !important;
+    }
+    .noshadow {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    .list {
+        padding: 0px;
+        margin-bottom: 0px;
+    }
+    .letter-divider {
+        background-color: #D7ECFE !important;
+    }
+    .item-divider {
+        background-color: #D7ECFE !important;
+        width: 100%;
+        height: 40px;
+        color: #3F4965 !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+    }    
+    .divItem {
+        display: inline-flex;
+        width: 100%;
+    }
+    .divItemLeft{
+       width: 100%;
+       margin-top: 18px;
+    }
+    .divItemRight{		
+       /*min-width: 59px;*/
+       /*min-height: 90px;
+       float: right;*/
+    }
+    .displayFlex {
+       display: flex;
+    }
+    ion-checkbox .item-cover{
+       display:none;
+    }
+    .ptmember-avatar {
+        margin-left: 12px !important;
+    }
+    .avatardarkletters {
+       text-align: center;
+       font-size: 18px;
+       vertical-align: 4px;
+       color: #3f4965;
+       display: block;
+       font-weight: normal;
+    }
+    .avatarletters {        
+        color: #3f4965;
+        font-size: 18px;
+        font-weight: normal;
+    }
+    .vertical-align {
+        margin: 0;
+        position: absolute;
+        top: 49%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    } 
+    .ptMember-position  {
+        height: 15px;
+        margin: 4px 0px 0px 0px !important;
+        font-size: 13px !important;
+        color: #797D80;
+     }
+    .border-list {
+        margin-left: 8px;
+        /*border-right: 16px solid #F1F8FE;*/
+    }
+    .item-no-indicator {
+        border-left: 2px solid #ffffff;
+    }
+    .footer {
+        height: 48px !important;
+    }
+    .footer-toolbar {
+        min-height: 48px !important;
+        height: 48px !important;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    .btnCancel {
+        background-color: #F4F5F8 !important;
+        border: none !important;
+        color: #030404 !important;
+        height: 48px !important;
+        opacity: 1 !important;
+        padding: 4px 0 0 0 !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+    }
+    .btnAdd {
+        background-color: #3C82FC !important;
+        border: none !important;
+        color: #FFFFFF !important;
+        height: 48px !important;
+        opacity: 1 !important;
+        padding: 4px 0 0 0 !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+    }
+    .ptMember-name {
+        font-size: 16px !important;
+        font-weight: 500;
+        color: #030404;
+    }
+    .label-text-container {
+        position: relative;
+        height: 100% !important;
+    }
+    .label {
+        /*position: relative;
+        height: 100% !important;*/
+        margin: 0px !important;
+     }
+    .ptMember-checkbox {
+        display: inline;
+        margin: 0px !important;
+    }
+    .checkbox-icon{
+        margin: 18px 0px 0px 0px !important;
+     }
+    .no-Users {
+        margin: 16px;        
+        font-size: 14px; 
+        font-weight: 500;
+    }
+    .searchbar-search-icon {
+        margin-top: 2px;
+    }
+    .bottom-separator {
+        height: 48px;
+    }
+}

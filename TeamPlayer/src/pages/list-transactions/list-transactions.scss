@@ -1,0 +1,27 @@
+page-list-transactions { 
+	.list-md .item-block .item-inner {
+		height: 90px;
+	}
+	.item-md.item-block .item-inner {
+		padding-right: 8px;
+		border-bottom: 1px solid #dedede;  
+	}
+	.item-block {
+		opacity: 1;
+	}
+	.side-Menu {
+		float: right;
+		min-width: 40px;
+		display: -webkit-inline-box;
+	}
+	.btnProject-more {
+		/*padding: 0px !important;    	
+		height: 25px !important;*/
+		height: 48px;
+		width: 48px;
+		border-radius: 24px;
+		margin: 0px 8px 0px 0px;
+		transform: translate3d(0px, -15px, 0px) scale(1);
+	}
+}
+ 

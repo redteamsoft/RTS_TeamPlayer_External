@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar no-border-bottom> 
+    <ion-title>{{ 'TRANSACTIONS_TITLE' | translate }}</ion-title>  
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">       
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" 
+                    [(ngModel)]="queryText"
+                    (ionInput)="updateLstRFQ()"
+                    placeholder="{{ 'PLACE_HOLDER_SEARCH' | translate }}">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="{{ 'PULLING_TEXT' | translate }}"
+      refreshingSpinner="dots"
+      refreshingText="{{ 'REFRESHING_TEXT' | translate }}"
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-label class="ion-label-customer">{{ lblCustomerName }} </ion-label>
+  <div *ngIf="lblScope == 00" style="margin-bottom: 5px;">
+    <div style="display: -webkit-inline-box;width: 84%;">
+      <div>
+          <ion-label style=" padding-left: 12px;margin-right: 5px;margin: 0px;">{{ 'PROJECT_LABEL' | translate }}:</ion-label> 
+      </div>
+      <div style="padding-left: 5px">
+          <ion-label  style="margin-bottom: -10px;white-space: normal;padding-right: 50px; margin-left: 0px;margin: 0px;">{{ lblProjectName }}</ion-label> 
+          <br>
+          <ion-label style="margin-bottom: 10px;margin: 0px; margin-top: -12px;">{{ lblProjectID }}</ion-label> 
+      </div> 
+    </div>
+    <div class="side-Menu">
+        <button class="btnProject-more" ion-button color="#488AFF" clear icon-only
+                (click)="ProjectMenuPopover($event, ProjectID, lblProjectName, lblProjectID)">
+          <ion-icon name="md-more"></ion-icon>
+        </button>
+    </div>
+  </div>
+
+  <div *ngIf="lblScope != 00">
+    <div style="display: -webkit-inline-box;width: 100%;">
+      <div>
+          <ion-label style=" padding-left: 12px;margin-right: 5px;">{{ 'CHANGE_LABEL' | translate }}:</ion-label> 
+      </div>
+      <div style="padding-left: 5px">
+          <ion-label  style="margin-bottom: -10px;white-space: normal;padding-right: 70px; margin-left: 0px;">{{ lblProjectName }}</ion-label> 
+          <br>
+          <ion-label style="margin-bottom: 10px;margin: 0px; margin-top: -12px;">{{ lblProjectID }} - {{ lblScope }}</ion-label> 
+      </div> 
+    </div> 
+  </div> 
+  
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of currentItems" [hidden]="item.hide">
+      <button ion-item (click)="openItem(item)" class="border-list" [disabled]="(item.TransactionType == 'Contract' && btnAccessContracts) || (item.TransactionType == 'RFQ' && btnAccessRFQs) || (item.TransactionType == 'Quote' && btnAccessQuotes)">
+      <!--<button ion-item (click)="openItem(item)" class="border-list" *ngIf="item.TransactionType == 'Contract'" [disabled]="btnAccessContracts">
+      <button ion-item (click)="openItem(item)" class="border-list" *ngIf="item.TransactionType == 'RFQ'" [disabled]="btnAccessRFQs"></button>
+      <button ion-item (click)="openItem(item)" class="border-list" *ngIf="item.TransactionType == 'Quote'" [disabled]="btnAccessQuotes"></button>-->
+        <ion-label>
+          <h2 *ngIf="item.TransactionType != 'Contract'" style="margin-bottom: -1px;white-space: normal;">{{item.TransactionType}}: {{item.Subject}}</h2>
+          <h2 *ngIf="item.TransactionType == 'Contract'" style="margin-bottom: -1px;white-space: normal;">{{item.TransactionType}}: {{item.TransactionNumber}} - {{item.Subject}}</h2>
+          <!--p>{{item.ProjectID}} - {{item.Scope}}</p-->
+          <ion-note item-end  style="font-size: 13px;">{{item.Status}}</ion-note>
+          <p style="font-size: 13px;margin-top: 3px;">
+            <font style="color:#808080" *ngIf="item.TransactionType == 'RFQ'">{{ 'DUE_DATE_LABEL' | translate }}:</font>
+            <font style="color:#808080" *ngIf="item.TransactionType == 'Quote'">{{ 'SUBMITTED_DATE_LABEL' | translate }}:</font>
+            <font style="color:#FF8C07">{{item.TransactionDueDate}}</font></p>         
+      </ion-label>
+      </button>
+      <!--ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options-->
+    </ion-item-sliding>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="{{ 'INFINITE_LOADING_TEXT' | translate }}">        
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> 
+</ion-content>

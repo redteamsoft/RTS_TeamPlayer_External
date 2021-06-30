@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar no-border-bottom>  
+    <ion-title>{{ 'PROJECT_TITLE' | translate }}</ion-title> 
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">       
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" 
+                    [(ngModel)]="queryText"
+                    (ionInput)="updateLstProjects()"
+                    placeholder="{{ 'PLACE_HOLDER_SEARCH' | translate }}">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="{{ 'PULLING_TEXT' | translate }}"
+      refreshingSpinner="dots"
+      refreshingText="{{ 'REFRESHING_TEXT' | translate }}"
+    ></ion-refresher-content>
+  </ion-refresher>
+  <ion-label class="ion-label-customer">{{ CustomerName }} </ion-label>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of currentItems" [hidden]="item.hide">
+      <div ion-item class="border-list">                
+          <ion-label>
+            <div class="divItem">
+              <div class="divItemLeft">
+                <div class="displayFlex">
+                  <button *ngIf="item.ProjectScope == 00" (click)="openItem(item)" [disabled]="btnAccessTransactions" class="projectButton">
+                    <p>{{item.ProjectName}}</p> 
+                    <h2 *ngIf="item.ProjectScope == 00">{{ 'PROJECT_LABEL' | translate }} #: {{item.ProjNum}} </h2>
+                    <div [hidden]="btnAccess">
+                      <ion-note style="font-size: 13px;" item-end *ngIf="item.CountTransactions == 1">{{item.CountTransactions}} {{ 'TRANSACTION_LABEL' | translate }}</ion-note>
+                      <ion-note style="font-size: 13px;" item-end *ngIf="item.CountTransactions > 1">{{item.CountTransactions}} {{ 'TRANSACTIONS_LABEL' | translate }}</ion-note>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="divItemRight">
+                <ion-buttons end>
+                  <button class="btnProject-more" ion-button color="#488AFF" clear icon-only
+                    (click)="presentPopover($event, item.ProjectID, item.ProjectName, item.ProjNum)">
+                    <ion-icon name="md-more"></ion-icon>
+                  </button>
+                </ion-buttons>
+              </div>
+            </div>
+          </ion-label>        
+      </div>
+      <!--ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options-->
+    </ion-item-sliding>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="{{ 'INFINITE_LOADING_TEXT' | translate }}">        
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

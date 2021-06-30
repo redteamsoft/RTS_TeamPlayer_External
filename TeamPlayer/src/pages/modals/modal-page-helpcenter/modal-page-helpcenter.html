@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar color="white">
+    <ion-buttons left>
+      <button (click)="cancelModal()" ion-button icon-only>
+        <ion-icon name="arrow-back" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="font-size-18">{{ 'HELP_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid-1 font-size-14">
+    <ion-row>
+      <ion-col col-12 class="padding-col word-break"><b>{{ 'HELP_MESSAGE' | translate }}</b></ion-col>
+    </ion-row>
+  </ion-grid>
+  <br>  
+  <ion-grid *ngIf="!IsPlatformWeb" class="grid-2">
+    <ion-row class="styleColumn padding-grid-2" (click)="intercomFnc()">
+      <div style="width: 54px;height: 54px;background-color: #D7ECFE;border-radius: 8px">        
+          <ion-icon name="md-chatboxes" style="font-size: 25px;color: #3F4965;padding: 17px;"></ion-icon>
+      </div>
+      <ion-col text-left class="padding-col" style="padding-top: 18px;">
+        <label style="font-size: 16px;color: #3F4965;padding: 18px;">{{ 'HELP_CHAT' | translate }}</label>
+      </ion-col>
+    </ion-row> 
+  </ion-grid> 
+  <ion-grid class="grid-2">
+    <ion-row class="styleColumn padding-grid-2" (click)="sendEmail()">
+      <div style="width: 54px;height: 54px;background-color: #D7ECFE;border-radius: 8px">        
+          <ion-icon name="md-mail" style="font-size: 25px;color: #3F4965;padding: 16px;margin-top: -2px;"></ion-icon>
+      </div>
+      <ion-col text-left class="padding-col" style="display: grid; padding-left: 18px;">
+        <label style="font-size: 16px;color: #3F4965;padding-top: 8px;margin-bottom: -8px;">{{ 'HELP_EMAIL' | translate }}</label>
+        <label style="font-size: 14px;white-space: normal;color: #797D80;-webkit-user-select: text;-moz-user-select: text;-ms-user-select: text;user-select: text;">service+teamplayer@redteam.com</label>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+  <ion-grid class="grid-2"> 
+    <ion-row class="styleColumn padding-grid-2" (click)="call()">
+      <div style="width: 54px;height: 54px;background-color: #D7ECFE;border-radius: 8px">        
+          <ion-icon name="md-call" style="font-size: 25px;color: #3F4965;padding: 18px;margin-top: -3px;"></ion-icon>
+      </div>
+      <ion-col text-left class="padding-col" style="display: grid;padding-left: 18px;">
+        <label style="font-size: 16px;color: #3F4965;padding-top: 8px;margin-bottom: -8px;">{{ 'HELP_CALL' | translate }}</label>
+        <label style="font-size: 14px;white-space: normal;color: #797D80;-webkit-user-select: text;-moz-user-select: text;-ms-user-select: text;user-select: text;">866-432-2021</label>
+      </ion-col> 
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-grid class="grid-2"> 
+    <ion-row class="styleColumn padding-grid-2" (click)="intercomFnc()">
+      <div style="width: 54px;height: 54px;background-color: #D7ECFE;border-radius: 8px">        
+        <ion-icon name="md-mail" style="font-size: 25px;color: #3F4965;padding: 16px;margin-top: -2px;"></ion-icon>
+      </div>
+      <ion-col text-left class="padding-col" style="display: grid;padding-left: 18px;">
+        <label style="font-size: 16px;color: #3F4965;padding-top: 8px;margin-bottom: -8px;">INTERCOM</label>
+      </ion-col> 
+    </ion-row>
+  </ion-grid>  --> 
+</ion-content>
+ 

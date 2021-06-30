@@ -1,0 +1,555 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'BILL_TITLE' | translate}}</ion-title>
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content #content>
+  <ion-list class="billing-floating-margin">
+    <div class="detail-padding" style="padding-bottom: 25px;">
+      <div>
+        <span class="info-quote">{{'BILL_INFORMATION' | translate}}:</span>
+      </div>
+      <div style="padding-top:25px;">
+        <div class="detailcontainer">
+          <div class="leftdiv">
+            <p>{{'CUSTOMER_LABEL' | translate}}:</p>
+          </div>
+          <div class="rigthdiv">
+            <p class="p_bold">{{customer._customername}} </p>
+            <p style="margin: 0px;margin-top: -12px;"
+              *ngIf="transaction._requester != null && transaction._requesterposition == ''">
+              {{transaction._requester}}</p>
+            <p style="margin: 0px;margin-top: -12px;"
+              *ngIf="transaction._requester != null && transaction._requesterposition != ''">
+              {{transaction._requester}},
+              <i>{{transaction._requesterposition}}</i></p>
+          </div>
+        </div>
+        <div class="detailcontainer">
+          <div class="leftdiv">
+            <p>{{'PROJECT_LABEL' | translate}}:</p>
+          </div>
+          <div class="rigthdiv">
+            <p *ngIf="project._projectscope == 00">{{project._projectname}}</p>
+            <p style="margin: 0px;margin-top: -12px;" *ngIf="project._projectscope == 00">{{project._rtProjNum}}
+            </p>
+          </div>
+        </div>
+        <div class="detailcontainer">
+          <div class="leftdiv">
+            <p>{{'COMMITMENT_LABEL' | translate}}:</p>
+          </div>
+          <div class="rigthdiv">
+            <p>{{ transaction._transactionnumber}}</p>
+          </div>
+        </div>
+        <div class="detailcontainer">
+          <div class="leftdiv">
+            <p style="margin-top: 0;">{{'SUBJECT_LABEL' | translate}}:</p>
+          </div>
+          <div class="rigthdiv">
+            <p style="margin-top: 0;">{{transaction._subject}} </p>
+          </div>
+        </div>
+        <div class="detailcontainer">
+          <div class="leftdiv">
+            <p style="margin-top: 0;">{{'STATUS_LABEL' | translate}}:</p>
+          </div>
+          <div class="rigthdiv">
+            <p style="margin-top: 0;">{{transaction._status}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-padding">
+      <form (ngSubmit)="showConfirmRetainage()" [formGroup]="billForm">
+        <ion-grid class="background-white">
+          <ion-row>
+            <ion-col class="title-invoice">
+              <span>{{'BILL_INVOICE_INFORMATION' | translate}}:</span>
+            </ion-col>
+            <ion-col class="status-invoice">
+              <span class="label-status">{{'STATUS_LABEL' | translate}}:</span>
+              <span class="value-status">{{billForm.get('billStatus').value}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item class="clear-weight">
+                <ion-label style="padding-left: 10px;" floating>{{'BILL_NUMBER_LABEL' | translate}}<span
+                    style="color: #FF8C07"> *</span></ion-label>
+                <ion-input style="padding-left: 10px;" formControlName="billNumber" maxlength="20" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item style="padding-left: 0px;padding-right: 0px;" class="clear-weight">
+                <ion-label style="padding-left: 10px; padding-top: 4px; z-index: 1;" stacked>
+                  {{'BILL_DATE_LABEL' | translate}}<span style="color: #FF8C07"> *</span></ion-label>
+                <ion-datetime #PickerBillDate style="padding-left: 10px;" displayFormat="MM/DD/YY"
+                  pickerFormat="MMM D, YYYY" placeholder="Select Date" formControlName="billDate" required>
+                </ion-datetime>
+                <ion-icon (click)="openBillDate()" name="md-calendar" item-end
+                  style="margin-top:18px; margin-bottom: 4px; color: #488AFF;">
+                </ion-icon>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item style="padding-left: 0px;padding-right: 0px;" class="clear-weight">
+                <ion-label style="padding-left: 10px; padding-top: 4px; z-index: 1;" stacked>
+                  {{'BILL_THROUGH_DATE_LABEL' | translate}}<span style="color: #FF8C07"> *</span></ion-label>
+                <ion-datetime #PickerThroughDate style="padding-left: 10px;" displayFormat="MM/DD/YY"
+                  pickerFormat="MMM D, YYYY" placeholder="Select Date" formControlName="billThroughDate" required>
+                </ion-datetime>
+                <ion-icon (click)="openThroughDate()" name="md-calendar" item-end
+                  style="margin-top:18px; margin-bottom: 4px; color: #488AFF;">
+                </ion-icon>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item style="padding-left: 0px;padding-right: 0px;" class="clear-weight">
+                <ion-label style="padding-left: 10px; padding-top: 4px; z-index: 1;" stacked>
+                  {{'BILL_FORMAT_LABEL' | translate}}</ion-label>
+                <ion-select style="padding-left: 10px;" placeholder="Select One" [(ngModel)]="ItemsFormat[0].id"
+                  formControlName="billFormat" interface="popover">
+                  <ion-option *ngFor="let item of ItemsFormat" [value]="item.id"
+                    style="background: rgba(241,249,255,0.5);color: #3F4965;">{{item.name}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item style="padding-left: 0px;padding-right: 0px;" class="clear-weight">
+                <ion-label style="padding-left: 10px; padding-top: 4px; z-index: 1;" stacked>
+                  {{'BILL_REMIT_TO_LABEL' | translate}}</ion-label>
+                <ion-select style="padding-left: 10px;" placeholder="Select One" [(ngModel)]="ItemsRemitTo[0].id"
+                  formControlName="billRemitTo" interface="popover">
+                  <ion-option *ngFor="let item of ItemsRemitTo" [value]="item.id"
+                    style="background: rgba(241,249,255,0.5);color: #3F4965;">{{item.name}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item class="clear-weight">
+                <ion-label style="padding-left: 10px;" floating>{{'BILL_CARE_OF_LABEL' | translate}}</ion-label>
+                <ion-input style="padding-left: 10px;" type="text" formControlName="billCareOf" maxlength="100">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item style="padding-left: 0px; height: 134px;padding-right: 0px;" class="clear-weight">
+                <ion-label style="padding-left: 10px; padding-top: 4px; z-index: 1;" stacked>
+                  {{ 'BILL_DESCRIPTION_LABEL' | translate }}</ion-label>
+                <ion-textarea rows="4" style="padding-left: 10px; padding-top: 5px;" maxlength="1000"
+                  formControlName="billDescription">
+                </ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <br>
+        <br>
+        <ion-grid class="background-white" style="padding: 0 8px;">
+          <ion-row class="line-detail-row">
+            <ion-col class="padding-0">
+              <span class="info-detail">{{'BILL_INFORMATION_DETAIL' | translate}}:</span>
+            </ion-col>
+            <ion-col class="padding-0" text-right>
+              <ion-select interface="popover" class="filter-select" [(ngModel)]="filterModel"
+                  formControlName="billFilter" [selectOptions]="{'cssClass': 'filter-popover'}">
+                <ion-option *ngFor="let filter of billFilters" [value]="filter.value">{{filter.text}}</ion-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <div formArrayName="billLines" *ngIf="filterBill.length > 0; else elseBlock">
+            <div *ngFor="let line of filterBill; let i = index; let last = last;">
+              <div [formGroupName]="i">
+                <div style="padding: 20px 0">
+                  <ion-row class="row-margin-12">
+                    <ion-col class="padding-line-col">
+                      <div class="col-width-number">
+                        <span class="info-costcode">{{line.controls.rowNumber.value + 1}}.</span>
+                      </div>
+                    </ion-col>
+                    <ion-col style="padding:0;">                      
+                      <span *ngIf="MultipleCC" class="info-costcode">{{line.controls.boLineCstcde.value}} - {{line.controls.PrtTitle.value}}</span>
+                      <span *ngIf="!MultipleCC" class="info-costcode">{{line.controls.PrtTitle.value}}</span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="line.controls.DisputedId.value" class="row-disputed">
+                    <ion-col class="padding-line-col">
+                      <div class="col-width-number">
+                      </div>
+                    </ion-col>
+                    <ion-col class="col-disputed">                      
+                      <div style="display: inline-flex;">
+                        <div style="margin-right: 1px;">
+                          <span class="lbl-disputed"><i class="tp-close-circle-outline"></i></span>
+                        </div>
+                        <div>
+                          <span class="lbl-disputed">{{'BILL_DISPUTED_LABEL' | translate}}</span>
+                        </div>
+                      </div>
+                    </ion-col>
+                    <ion-col text-right class="col-comments">
+                      <div style="display: inline-flex;">
+                        <span class="lbl-comments"
+                        (click)="openModalLineDisputed(line.controls, i)">{{'BILL_COMMENTS_LABEL' | translate}}</span>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="row-margin-20">
+                    <ion-col class=" padding-line-col">
+                      <div class="col-width-number">
+                      </div>
+                    </ion-col>
+                    <ion-col text-left class="line-padding-scope scope-label padding-0 width-scope">
+                      <span class="line-label-regular">{{'BILL_LINE_SCOPE' | translate}}:</span>
+                      <span class="line-label-medium" *ngIf="line.controls.TO_Mod.value == '00'">Original</span>
+                      <span class="line-label-medium"
+                        *ngIf="line.controls.TO_Mod.value != '00'">{{line.controls.TO_Mod.value}}</span>
+                    </ion-col>
+                    <ion-col text-right class="line-padding-scope scope-label" style="padding:0 10px 0 0;">
+                      <span class="line-label-regular">{{'BILL_LINE_AMOUNT' | translate}}:</span>
+                      <span class="line-label-medium">{{line.controls.UnitCost.value | number:'1.2-2'}}</span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="margin: 0 0 4px 0;">
+                    <ion-col class="padding-line-col">
+                      <div class="col-width-number">
+                      </div>
+                    </ion-col>
+                    <ion-col class="line-padding-prior padding-0">
+                      <ion-label class="labelLine">{{'BILL_PRIOR_BILLING' | translate}}</ion-label>
+                    </ion-col>
+                    <ion-col class="line-padding-progress padding-0">
+                      <div style="float: right; width: 132px; padding-right: 10px;">
+                        <ion-label text-right class="labelLine">{{'BILL_THIS_PERIOD' | translate}}</ion-label>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col class="padding-line-col">
+                      <div class="col-width-number">
+                      </div>
+                    </ion-col>
+                    <ion-col class="line-padding-prior padding-0">
+                      <ion-item (click)="openModalPrior(line.controls, i)" class="styleInput widthBox">
+                        <ion-input type="tel" formControlName="Prior" text-right readonly style="padding-left: 8px;">
+                        </ion-input>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col class="line-padding-progress padding-0">
+                      <div style="float: right;">
+                        <ion-item (click)="openModalProgress(line.controls, i)" class="styleInput widthBox">
+                          <ion-input type="tel" formControlName="ThisPeriod" readonly text-right
+                            style="padding-left: 8px;">
+                          </ion-input>
+                        </ion-item>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="line.controls.PresentlyStored.value !== 0">
+                    <ion-col text-right class="col-presently-lbl">
+                      <ion-label class="labelLine">{{'BILL_PRESENTLY_STORED' | translate}}:</ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="line.controls.PresentlyStored.value !== 0">
+                    <ion-col text-right class="col-presently-value">
+                      <span
+                        class="presently-stored-value">{{line.controls.PresentlyStored.value | number:'1.2-2'}}</span>
+                    </ion-col>
+                  </ion-row>
+                </div>
+                <ion-row *ngIf="!last" class="rowLineItem"></ion-row>
+              </div>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <div class="empty-results-container">
+              <ion-row class="empty-results-row">
+                {{emptyMessage}}
+              </ion-row>
+            </div>            
+          </ng-template>
+        </ion-grid>
+        <br>
+        <ion-grid class="background-white grid-border">
+          <ion-row style="padding: 13px 12px 18px 10px">
+            <ion-col class="padding-0">
+              <span class="label-billing fontSize14">{{'BILL_PERIOD_BILLING_LABEL' | translate}}</span>
+            </ion-col>
+            <ion-col class="padding-0">
+              <span class="label-billing paddingRight7 fontSize14">{{ThisPeriodBilling | number:'1.2-2'}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="BoTypeRetainage == 'YES'" class="padding-botype">
+            <ion-col class="paddingCol">
+              <ion-item class="labelRetainage">
+                <div>{{'BILL_RETAINAGE_LABEL' | translate}}</div>
+              </ion-item>
+            </ion-col>
+            <ion-col class="paddingCol">
+              <ion-item class="styleInput input-number item-input widthBox inputNoLines">
+                <ion-input (click)="openModalRetainage()" type="tel" maxlength="12"
+                  formControlName="billCurrentRetainage" text-right readonly></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="BoTypeRetainage == 'YES' && billForm.controls.DisputedRetainage.value"
+            class="row-disputed-total">
+            <ion-col class="col-disputed-total">             
+              <div style="display: inline-flex;">
+                <div style="margin-right: 1px;">
+                  <span class="lbl-disputed"><i class="tp-close-circle-outline"></i></span>
+                </div>
+                <div>
+                  <span class="lbl-disputed">{{'BILL_DISPUTED_LABEL' | translate}}</span>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col text-right class="col-comments">
+              <div style="display: inline-flex;">
+                <span class="lbl-comments"
+                (click)="openModalDisputed('CurrentRetainage')">{{'BILL_COMMENTS_LABEL' | translate}}</span>
+              </div>              
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="BoTypeRetainage == 'YES'&& billForm.controls.DisputedRetainage.value"
+            class="row-line-disputed"></ion-row>
+          <ion-row *ngIf="BoTypeTaxability == 'YES'" class="padding-botype">
+            <ion-col col-6 class="paddingCol">
+              <div (click)="WarningTaxes(BILL_WARNING_TAXES)" class="labelTax">
+                {{'BILL_TAX_LABEL' | translate}} ({{TaxRate | percent:'1.0-2'}} {{TaxVenueName}})
+              </div>
+            </ion-col>
+            <ion-col col-6 class="paddingCol">
+              <ion-item class="input-number-tax item-input widthBox inputNoLines">
+                <ion-input type="tel" maxlength="12" formControlName="billTax" text-right (ionBlur)="onChangeTax()">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="BoTypeTaxability == 'YES' && billForm.controls.DisputedTax.value" class="row-disputed-total">
+            <ion-col class="col-disputed-total">             
+              <div style="display: inline-flex;">
+                <div style="margin-right: 1px;">
+                  <span class="lbl-disputed"><i class="tp-close-circle-outline"></i></span>
+                </div>
+                <div>
+                  <span class="lbl-disputed">{{'BILL_DISPUTED_LABEL' | translate}}</span>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col text-right class="col-comments">
+              <div style="display: inline-flex;">
+                <span class="lbl-comments"
+                (click)="openModalDisputed('Tax')">{{'BILL_COMMENTS_LABEL' | translate}}</span>
+              </div>              
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="BoTypeTaxability == 'YES' && billForm.controls.DisputedTax.value" class="row-line-disputed">
+          </ion-row>
+          <ion-row *ngIf="BoTypeCanadianTaxability == 'YES'" class="padding-botype">
+            <ion-col class="paddingCol">
+              <div (click)="WarningTaxes(BILL_WARNING_TAXES)" class="labelTax">
+                {{'BILL_VALUE_TAX_LABEL' | translate}} ({{TaxValueRate | percent:'1.0-2'}} {{VATVenueName}})
+              </div>
+            </ion-col>
+            <ion-col class="paddingCol">
+              <ion-item class="input-number-tax item-input widthBox inputNoLines">
+                <ion-input type="tel" maxlength="12" formControlName="billValueTax" text-right
+                  (ionBlur)="onChangeValueTax()">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="BoTypeCanadianTaxability == 'YES' && billForm.controls.DisputedVAT.value"
+            class="row-disputed-total">
+            <ion-col class="col-disputed-total">             
+              <div style="display: inline-flex;">
+                <div style="margin-right: 1px;">
+                  <span class="lbl-disputed"><i class="tp-close-circle-outline"></i></span>
+                </div>
+                <div>
+                  <span class="lbl-disputed">{{'BILL_DISPUTED_LABEL' | translate}}</span>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col text-right class="col-comments">
+              <div style="display: inline-flex;">
+                <span class="lbl-comments"
+                (click)="openModalDisputed('VAT')">{{'BILL_COMMENTS_LABEL' | translate}}</span>
+              </div>              
+            </ion-col>
+          </ion-row>
+          <ion-row class="rowLine"></ion-row>
+          <ion-row style="padding: 17px 12px 12px 10px;">
+            <ion-col class="padding-0">
+              <span class="label-billing fontSize14">{{'BILL_NET_AMOUNT_DUE' | translate}}</span>
+            </ion-col>
+            <ion-col class="padding-0">
+              <span
+                class="label-billing paddingRight7 fontSize14"><b>{{project._rtMonetarySymbol}}{{NetAmountDue | number:'1.2-2'}}</b></span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <br>
+        <br>
+        <div *ngFor="let item of attachItems;let ix = index; let last = last;">
+          <ion-label class="attachitem" style="margin: 0;">
+            <div class="divItem">
+              <div class="divSubItem">
+                <div (click)="openAttach(item)" style="height: 58px; width: 58px;">
+                  <img src="./assets/imgs/{{item.typeimage}}" />
+                </div>
+              </div>
+              <div id="filedescription{{ix}}" style="display: inline-flex; width: 100%;">
+                <div class="labelCol-2">
+                  <textarea id="txtdescription{{ix}}" maxlength="1000" rows="3" class="input-textarea-description"
+                    [(ngModel)]="item.description" [ngModelOptions]="{standalone: true}"
+                    placeholder="Insert Description..." (focus)="FocusDescription(ix)" (blur)="BlurDescription(ix)"
+                    (keyup)="resize(ix)"></textarea>
+                </div>
+                <div (click)="deleteAttach(item)" style="width: 34px;">
+                  <ion-icon style="color: #488AFF;font-size: 25px;padding: 5px 10px 0px 10px" name="md-close">
+                  </ion-icon>
+                </div>
+              </div>
+            </div>
+          </ion-label>
+          <br>
+          {{last ? this.adjust() : ''}}
+        </div>
+        <div *ngFor="let item of attachNewItems;let iy = index;">
+          <ion-label class="attachitem" style="margin: 0;">
+            <div class="divItem">
+              <div class="divSubItem">
+                <div style="height: 58px; width: 58px;">
+                  <img src="./assets/imgs/{{item.typeimage}}" />
+                </div>
+              </div>
+              <div id="newfiledescription{{iy}}" style="display: inline-flex; width: 100%;">
+                <div class="labelCol-2">
+                  <textarea id="newtxtdescription{{iy}}" maxlength="1000" rows="3" class="input-textarea-description"
+                    [(ngModel)]="item.description" [ngModelOptions]="{standalone: true}"
+                    placeholder="Insert Description..." (focus)="newFocusDescription(iy)"
+                    (blur)="newBlurDescription(iy)" (keyup)="newResize(iy)"></textarea>
+                </div>
+                <div (click)="deleteNewAttach(item)" style="width: 34px;">
+                  <ion-icon style="color: #488AFF;font-size: 25px;padding: 5px 10px 0px 10px" name="md-close">
+                  </ion-icon>
+                </div>
+              </div>
+            </div>
+          </ion-label>
+          <br>
+        </div>
+        <ion-grid class="background-white grid-border" (click)="pickImage()">
+          <ion-row style="padding-top: 18px;">
+            <div
+              style="color: #488AFF;    font-size: 16px;    font-weight: 500;    display: inline-flex; padding-left: 10px;">
+              <div>
+                <ion-icon item-start name="ios-add-circle-outline" style="font-weight: bold;"></ion-icon>
+              </div>
+              <div>
+                &nbsp;{{'ADD_FILES' | translate}}
+              </div>
+            </div>
+          </ion-row>
+          <br>
+        </ion-grid>
+        <ion-grid>
+          <ion-row
+            style="padding-top: 16px; padding-bottom: 48px; padding-left: 11px; font-size: 13px; color: #656B79;">
+            <div style="margin-bottom: 8px;">
+              Allowed file types:
+            </div>
+            <div style="margin-bottom: 8px;color: #FD9723">
+              *.docx, *dwf, *dwg, *.gif, *.jpeg, *.jpg, *.mp3, *.mp4, *.mpp, *.pdf, *.png, *.tif, *.tiff, *.txt, *.wmv,
+              *.xlsx, *.xps.
+            </div>
+            <div>
+              The file size cannot exceed <b>25MB</b>
+            </div>
+          </ion-row>
+        </ion-grid>
+        <ion-grid style="padding: 0;">
+          <ion-row class="row-chk-margin">
+            <ion-item class="item-checkbox item-tp">
+              <ion-label>Yes, I agree to your <span class="terms-link" (click)="OpenTermsConditions()">{{'TERMS_TITLE' | translate}}</span></ion-label>
+              <ion-checkbox class="chk-margin" formControlName="billTerms"></ion-checkbox>
+            </ion-item>
+          </ion-row>
+        </ion-grid>
+        <div *ngIf="!ContentDisabled" class="paddingButton">
+          <button [disabled]="!billForm.valid || !billForm.get('billTerms').value" ion-button color="primary" type="submit"
+            block>{{ 'BTN_SUBMIT' | translate }}</button>
+        </div>
+        <br>
+        <div *ngIf="!ContentDisabled" class="paddingButton">
+          <button [disabled]="!billForm.valid" ion-button color="primary" type="button" class="btn-white"
+            (click)="onSubmit('Draft')" block>{{ 'BTN_DRAFT' | translate }}</button>
+        </div>
+        <br>
+        <div *ngIf="ContentDisabled" class="paddingButton">
+          <button ion-button color="primary" type="button" (click)="onClose()"
+            block>{{ 'BILL_BTN_CLOSE' | translate }}</button>
+        </div>
+      </form>
+    </div>
+    <br />
+  </ion-list>
+</ion-content>
+
+<ion-fab right bottom #fab>
+  <button ion-fab style="background-color: #FF8C07;" (click)="handleOptions()">
+    <ion-icon name="md-arrow-dropup"></ion-icon>
+  </button>
+  <ion-fab-list side="top" class="optionTools">
+    <div class="flex-element" (click)="preview(fab)">
+      <div class="fab-option-text">
+        {{ 'BILL_BTN_PREVIEW' | translate }}
+      </div>
+      <div>
+      <button ion-fab>
+        <i class="fab-option-icon tp-eye-outline"></i>
+      </button>
+      </div>
+    </div>
+    <div class="flex-element" (click)="scrollBot(content, fab)">
+      <div class="fab-option-text">
+        {{ 'BILL_BTN_JUMP_BOT' | translate }}
+      </div>
+      <div>
+      <button ion-fab>
+        <i class="fab-option-icon tp-chevron-double-down-outline"></i>
+      </button>
+      </div>
+    </div>
+    <div class="flex-element" (click)="scrollTop(content, fab)">
+      <div class="fab-option-text">
+        {{ 'BILL_BTN_JUMP_TOP' | translate }}
+      </div>
+      <div>
+      <button ion-fab>
+        <i class="fab-option-icon tp-chevron-double-up-outline"></i>
+      </button>
+      </div>
+    </div>
+  </ion-fab-list>
+</ion-fab>
+<div id="bkmenu" class="backgroundFloatMenu" [ngClass]="{'show-bg': showTools}" (click)="closeOptions(fab)"></div>

@@ -1,0 +1,32 @@
+project-menu {
+    .projectMenu-popover{
+        margin: 0;
+    }
+    .projectMenu-popover ion-label {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .item-block {
+      min-height: 0;
+    }
+
+    .list-md {
+      padding: 0;
+    }
+
+    .item-md {
+      padding: 15px 16px;
+      background-color: #fafafa;
+    }
+
+    .item-ios {
+      padding: 15px 16px !important;
+    }
+    .item-inner {
+      background-image: none !important;
+    }
+    .popover-menu {
+      border-radius: 0px !important;
+    }
+}

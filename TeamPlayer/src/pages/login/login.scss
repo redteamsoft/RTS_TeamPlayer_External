@@ -1,0 +1,378 @@
+page-login {
+	.txtemailph {
+		background: transparent !important;
+		border: none;
+		-webkit-text-fill-color: darkgray;
+		width: 100%;
+	}
+
+	.eyepass {
+		/*padding: 10px; 
+		color: #FFFFFF;
+		margin-right: -17px !important;*/
+		padding: 10px 10px 8px 10px;
+		color: #ffffff;
+		position: relative;
+		font-size: 24px;
+		left: 83%;
+		margin-top: -48px;
+		width: 50px;
+	}
+
+	.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+	.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+		box-shadow: inset 0 0px 0 0 #32db64;
+	}
+
+	.item-md.item-input.item-input-has-focus .item-inner,
+	.item-md.item-input.input-has-focus .item-inner {
+		box-shadow: inset 0 0px 0 0 #488aff;
+	}
+	.txtemail {
+		background: transparent !important;
+		border: none;
+		-webkit-text-fill-color: white;
+		width: 100%;
+	}
+
+	@-webkit-keyframes autofill {
+		to {
+			color: white;
+			background: transparent;
+		}
+	}
+
+	input:-webkit-autofill {
+		-webkit-animation-name: autofill;
+		-webkit-animation-fill-mode: both;
+	}
+
+	.label-md {
+		margin: 13px 0px 13px 0;
+	}
+	.list-md .item-input:last-child {
+		border-bottom: 0px solid #dedede;
+	}
+
+	.list-md .item-input.item-input-has-focus:last-child,
+	.list-md .item-input.input-has-focus:last-child {
+		border-bottom: 0px solid #dedede;
+		-webkit-box-shadow: inset 0 0px 0 0 #488aff;
+		box-shadow: inset 0 0px 0 0 #488aff;
+	}
+
+	.list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
+	.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
+		border-bottom: 0px solid #dedede;
+		-webkit-box-shadow: inset 0 0px 0 0 #488aff;
+		box-shadow: inset 0 0px 0 0 #488aff;
+	}
+
+	.text-input {
+		color: white !important;
+	}
+
+	.text-input[disabled] {
+		opacity: 0.8;
+	}
+
+	.thanks-desc {
+		color: white;
+		font-size: 16px;
+	}
+
+	.thanks-icon {
+		color: white;
+		font-size: 36px;
+		padding-right: 15px;
+	}
+
+	.lbl-forgotpass {
+		max-width: 200px;
+		width: 200px;
+		color: white;
+		opacity: 0.4;
+		margin: auto;
+		margin-top: -14px;
+		font-size: 16px;
+		text-align: -webkit-center;
+	}
+
+	.login-padding {
+		padding: 40px;
+		max-width: 500px;
+		margin: auto;
+	}
+
+	.btn-secondary {
+		padding-top: 16px;
+	}
+
+	.login-tittle {
+		color: white;
+		font-size: 28px;
+		padding-left: 40px;
+		font-family: Roboto, Medium;
+		display: -webkit-inline-box;
+	}
+
+	.tp-logo {
+		width: 80px;
+		height: 80px;
+		margin: 40px 40px 40px;
+		background-repeat: no-repeat;
+		background: url(../assets/img/appicon.png) no-repeat center;
+		background-size: 100%;
+	}
+
+	hr {
+		margin-top: 15px;
+		margin-bottom: 15px;
+		height: 4px;
+		background-color: #fb8926 !important;
+		border-radius: 25px;
+		max-width: 24px;
+	}
+
+	.text-input-md {
+		margin: 0px;
+		padding: 0;
+		width: calc(100% - 8px - 8px);
+	}
+
+	.login-textbox {
+		padding: 1px 25px 15px 25px !important;
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 25px;
+		font-size: 16px;
+		max-height: 48px;
+		font-family: Roboto, Regular;
+		-webkit-user-select: text;
+		-moz-user-select: text;
+		-ms-user-select: text;
+		user-select: text;
+	}
+
+	.login-background {
+		background: url("../assets/loginbackgrounds/web/Default.png") no-repeat center;
+		background-size: cover;
+		background-color: #3f4965;
+	}
+
+	.platform-ios.platform-cordova {
+		.login-background {
+			background: url("../assets/loginbackgrounds/ios/Default@2x~universal~anyany.png") no-repeat center;
+			background-size: cover;
+			background-color: #3f4965;
+		}
+		@media (height: 1136px) and (width: 640px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-568h@2x~iphone.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 640px) and (width: 1136px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-568h@2x~iphone.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 1334px) and (width: 750px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-667h.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 750px) and (width: 1334px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-667h.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 2208px) and (width: 1242px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-736h.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 1242px) and (width: 2208px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-Landscape-736h.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 1536px) and (width: 2048px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-Landscape@2x~ipad.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 2048px) and (width: 1536px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-Portrait@2x~ipad.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 2048px) and (width: 2732px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-Landscape@~ipadpro.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 2732px) and (width: 2048px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-Portrait@~ipadpro.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 768px) and (width: 1024px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-Landscape~ipad.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 1024px) and (width: 768px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default-Portrait~ipad.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 960px) and (width: 640px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default@2x~iphone.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 640px) and (width: 960px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default@2x~iphone.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 480px) and (width: 320px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default~iphone.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (height: 320px) and (width: 480px) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/ios/Default~iphone.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+	}
+
+	.platform-android.platform-cordova {
+		@media (min-width: 10px) and (min-height: 20px) and (orientation: landscape) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-land-ldpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (min-width: 20px) and (min-height: 10px) and (orientation: portrait) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-port-ldpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+
+		@media (min-width: 480px) and (min-height: 320px) and (orientation: landscape) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-land-mdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (min-width: 320px) and (min-height: 480px) and (orientation: portrait) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-port-mdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+
+		@media (min-width: 800px) and (min-height: 480px) and (orientation: landscape) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-land-hdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (min-width: 480px) and (min-height: 800px) and (orientation: portrait) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-port-hdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+
+		@media (min-width: 1280px) and (min-height: 720px) and (orientation: landscape) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-land-xhdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (min-width: 720px) and (min-height: 1280px) and (orientation: portrait) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-port-xhdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+
+		@media (min-width: 1600px) and (min-height: 960px) and (orientation: landscape) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-land-xxhdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (min-width: 960px) and (min-height: 1600px) and (orientation: portrait) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-port-xxhdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+
+		@media (min-width: 1920px) and (min-height: 1280px) and (orientation: landscape) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-land-xxxhdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+		@media (min-width: 1280px) and (min-height: 1920px) and (orientation: portrait) {
+			.login-background {
+				background: url("../assets/loginbackgrounds/android/drawable-port-xxxhdpi-screen.png") no-repeat center;
+				background-size: cover;
+				background-color: #3f4965;
+			}
+		}
+	}
+
+	.content-login {
+		margin: auto;
+		max-width: 500px;
+	}
+}

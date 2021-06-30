@@ -1,0 +1,72 @@
+<!--
+  Generated template for the ListProjectTeamPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title text-left style="text-align: left !important">{{ 'PROJECT_TEAM_TITLE' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addProjectTeam()" class="btnAdd-PT" [hidden]="hideBtnAccess">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <g id="plus" transform="translate(1859 89)">
+            <path id="Path_830" data-name="Path 830" d="M0,0H24V24H0Z" transform="translate(-1859 -89)" fill="none"/>
+            <path id="Path_831" data-name="Path 831" d="M0,0H24V24H0Z" transform="translate(-1859 -89)" fill="none"/>
+            <path id="plus-2" data-name="plus" d="M19,13H13v6H11V13H5V11h6V5h2v6h6Z" transform="translate(-1859 -89)" fill="#488AFF"/>
+          </g>
+        </svg>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <p class="project-title">{{ 'PROJECT_LABEL' | translate}}: {{projectInfo.name}} - {{hideBtnAccess}}</p>
+  <p class="project-subtitle">{{projectInfo.number}}</p>  
+
+  <ion-list> 
+    <ion-item-group *ngFor="let ptMember of teamMembers">      
+      <ion-item (click)="openPTProfile(ptMember)" class="ptmember-item" [ngStyle]="{'min-height':ptMember.Position_tp ? '84px' : '76px' }">
+        <ion-avatar item-start class="ptmember-avatar"> 
+          <button class="blue-light-circle-background">
+            <span class="avatarletters">{{ptMember.FirstName_tp.charAt(0) | uppercase}}{{ptMember.LastName_tp.charAt(0) | uppercase}}</span>
+          </button>
+        </ion-avatar>
+        <ion-label class="ptMember-info">
+          <div class="divItem">
+            <div class="divItemLeft">
+              <p class="ptMember-name" [ngClass]="ptMember.Position_tp ? '' : 'vertical-align'">{{ptMember.FirstName_tp}} {{ptMember.LastName_tp}}</p> 
+              <p *ngIf="ptMember.Position_tp" class="ptMember-position" item-end>{{ptMember.Position_tp}}</p>
+            </div>
+            <div class="divItemRight" *ngIf="ptMember.LevelAccess_tp == 'Added' && ptMember.TeamInvitedDate_tp == null">
+              <ion-checkbox (ionChange)="checkEvent($event, ptMember)" [checked]="ptMember.checked" [hidden]="hideBtnAccess" class="ptMember-checkbox"></ion-checkbox>
+            </div>
+          </div>
+          <p class="ptMember-invitedby bottom-align" *ngIf="ptMember.LevelAccess_tp == 'Added'; else invitedBy">{{ 'PROJECT_TEAM_ADDED_LABEL' | translate}} {{ptMember.PT_UpdatedByName}}</p>
+          <ng-template #invitedBy>
+            <p class="ptMember-addedby bottom-align" >{{ 'PROJECT_TEAM_INVITED_LABEL' | translate}}</p>
+          </ng-template>
+        </ion-label>        
+      </ion-item>    
+    </ion-item-group>
+    <div class="bottom-separator">&nbsp;</div>
+    <div class="bottom-separator" [hidden]="hideToolbar">&nbsp;</div>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="footer-toolbar">
+    <ion-segment [(ngModel)]="poiqwe">
+      <span *ngIf="hideToolbar; else manyButtons" style="width: 100%;">
+        <ion-segment-button value="false" (click)="footerCancel()" class="btnCancelFull">{{closeBtnLabel}}</ion-segment-button>
+      </span>
+      <ng-template #manyButtons>
+        <ion-segment-button value="false" (click)="footerCancel()" class="btnCancel">{{closeBtnLabel}}</ion-segment-button>
+        <ion-segment-button value="false" (click)="footerRemove()" class="btnRemove" [hidden]="hideToolbar || hideBtnAccess">Remove</ion-segment-button>
+      </ng-template>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>{{ 'BILLING_TITLE' | translate }}</ion-title>
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" [(ngModel)]="queryText" (ionInput)="updateLstBilling()"
+      placeholder="{{ 'PLACE_HOLDER_SEARCH' | translate }}">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{ 'PULLING_TEXT' | translate }}"
+      refreshingSpinner="dots" refreshingText="{{ 'REFRESHING_TEXT' | translate }}"></ion-refresher-content>
+  </ion-refresher>
+  <div class="labelHeader">
+    <div class="labelSubHeader">
+      <div>
+        <ion-label class="labelTitle">{{ 'VENDOR_COMMITMENT' | translate }}:
+        </ion-label>
+      </div>
+      <div style="padding-left: 5px">
+        <ion-label class="labelProjectDescription">
+          {{ lblTransactionNumber }} - {{ lblProjectName }}</ion-label>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <div style="width: 100%;">
+    <div style="float: left;">
+      <ion-label class="labelTotalBilled">{{ 'TOTAL_BILLED_LABEL' | translate }}:
+        <b>{{project._rtMonetarySymbol}}{{ lbltotalbilled | number:'1.2-2'}}</b>
+      </ion-label>
+    </div>
+
+    <div style="float: right;">
+      <ion-label class="labelOpen">
+        {{ 'CONTRACT_OPEN' | translate }}:
+        <b *ngIf="!olddata" class="labelOpenAmount">
+          {{project._rtMonetarySymbol}}{{CurrentOpenCommitment | number:'1.2-2'}}
+        </b>
+        <b *ngIf="olddata" class="labelOpenAmount">{{ 'UNKNOW_LABEL' | translate }}</b>
+      </ion-label>
+    </div>
+  </div>
+
+  <ion-list style="margin-bottom: 66px;">
+    <ion-item-sliding *ngFor="let item of currentItems" [hidden]="item.hide">
+      <div ion-item class="border-list">
+        <ion-label style="margin: 0;">
+          <div class="divItem">
+            <div (click)="(btnAccess && (item.Status == 'Draft' )) ? '' : openItem(item)"
+              [ngClass]="[item.Status == 'Rejected by Customer' ? 'divSubItemRejected' : 'divSubItem']">
+              <div class="displayFlex">
+                <div class="labelCol-1">
+                  <h2 class="labelInvoiceNumber strike-label" *ngIf="item.Status == 'Rejected by Customer'">
+                    # {{ item.InvoiceNumber }}
+                  </h2>
+                  <h2 class="labelInvoiceNumber" *ngIf="item.Status != 'Rejected by Customer'">
+                    # {{ item.InvoiceNumber }}
+                  </h2>
+                </div>
+                <div class="labelCol-2">
+                  <div class="labelLineAmount strike-label" *ngIf="item.Status == 'Rejected by Customer'">
+                    {{project._rtMonetarySymbol}}{{ item.NetAmountDue | number:'1.2-2'}}
+                  </div>
+                  <div class="labelLineAmount" *ngIf="item.Status != 'Rejected by Customer'">
+                    {{project._rtMonetarySymbol}}{{ item.NetAmountDue | number:'1.2-2'}}
+                  </div>
+                </div>
+              </div>
+              <div class="displayFlex">
+                <div class="labelCol-1">
+                  <span style="font-size:12px; vertical-align: bottom;" *ngIf="item.Status == 'Rejected by Customer'">
+                    <ion-icon style="color: #F23842;font-weight: bold;" name="ios-close-circle-outline"></ion-icon>
+                  </span>
+                  <ion-note item-end class="labelStatus">{{item.Status}}</ion-note>
+                  <p *ngIf="item.bandstyle1 && item.Status != 'Rejected by Customer'" class="labelDueDays">
+                    <font *ngIf="item.bandstyle2" class="redColor">{{ item.DatesDif }} </font>
+                    <font *ngIf="!item.bandstyle2" class="orangeColor">{{ item.DatesDif }} </font>
+                  </p>
+                  <p *ngIf="!item.bandstyle1 && item.Status != 'Rejected by Customer'" class="labelPaid">
+                    <font class="greenColor">{{ item.DatesDif }} </font>
+                  </p>
+                </div>
+                <div class="labelCol-2">
+                  <div>
+                    <ion-note item-end class="labelLineEdit">{{ item.addeditlabel }}</ion-note>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="buttonCol-3">
+              <button class="btn-more" ion-button color="#488AFF" clear icon-only
+                (click)="presentPopover($event, item)">
+                <ion-icon name="md-more"></ion-icon>
+              </button>
+            </div>
+            <div>
+
+            </div>
+          </div>
+        </ion-label>
+      </div>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+<ion-fab *ngIf="!ContentDisabled" right bottom (click)="enterBilling()">
+  <button ion-fab class="orangeBG" [hidden]="btnAccess">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>

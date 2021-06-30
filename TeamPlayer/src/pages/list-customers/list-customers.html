@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'CUSTOMER_TITLE' | translate }}</ion-title>  
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">       
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>  
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" 
+                    [(ngModel)]="queryText"
+                    (ionInput)="updateLstCustomers()"
+                    placeholder="{{ 'PLACE_HOLDER_SEARCH' | translate }}">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="content-background">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="{{ 'PULLING_TEXT' | translate }}"
+      refreshingSpinner="dots"
+      refreshingText="{{ 'REFRESHING_TEXT' | translate }}"
+    ></ion-refresher-content>
+  </ion-refresher>
+ 
+  <ion-list>
+    <ion-item-sliding  *ngFor="let item of currentItems" [hidden]="item.hide">
+      <button ion-item (click)="openItem(item)" class="border-list" *ngIf="item.StatusRelationship == 1  || (item.StatusRelationship == 0 && item.Product == 8)" [disabled]="btnAccessProjects">
+        <ion-label>
+          <h2 style="white-space: normal;">{{item.CustomerName}}</h2>
+          <!--p>{{item.ProjectID}} - {{item.Scope}}</p--> 
+          <div [hidden]="btnAccess">
+            <ion-note style="font-size: 13px;" item-end *ngIf="item.CountProjects == 1 && item.CountTransactions == 1">{{item.CountProjects}} {{ 'PROJECT_LABEL' | translate }}, {{item.CountTransactions}} {{ 'TRANSACTION_LABEL' | translate }}</ion-note>
+            <ion-note style="font-size: 13px;" item-end *ngIf="item.CountProjects == 1 && item.CountTransactions > 1">{{item.CountProjects}} {{ 'PROJECT_LABEL' | translate }}, {{item.CountTransactions}} {{ 'TRANSACTIONS_LABEL' | translate }}</ion-note>
+            <ion-note style="font-size: 13px;" item-end *ngIf="item.CountProjects > 1 && item.CountTransactions == 1">{{item.CountProjects}} {{ 'PROJECTS_LABEL' | translate }}, {{item.CountTransactions}} {{ 'TRANSACTION_LABEL' | translate }}</ion-note>
+            <ion-note style="font-size: 13px;" item-end *ngIf="item.CountProjects > 1 && item.CountTransactions > 1">{{item.CountProjects}} {{ 'PROJECTS_LABEL' | translate }}, {{item.CountTransactions}} {{ 'TRANSACTIONS_LABEL' | translate }}</ion-note>
+          </div>
+        </ion-label>
+      </button>
+      <!--ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options-->
+    </ion-item-sliding>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="{{ 'INFINITE_LOADING_TEXT' | translate }}">        
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> 
+</ion-content>

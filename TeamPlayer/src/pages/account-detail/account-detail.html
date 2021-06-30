@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!--{{ pageTitle }}-->
+    <ion-title>{{ 'ACCOUNT_DETAIL' | translate }}</ion-title>
+
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <br>
+  <ion-grid>
+    <br>
+    <br>
+    <ion-row>
+      <ion-col col-6 text-left class="padding-left-100"><b>{{ 'ACCOUNT_PLAN' | translate }}:</b></ion-col>
+      <ion-col col-6 text-right class="padding-right-80">{{accountPlan}}</ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col col-6 text-left class="padding-left-100">{{ 'ACCOUNT_SINCE' | translate }}:</ion-col>
+      <ion-col col-6 text-right class="padding-right-80">{{accountSince}}</ion-col>
+    </ion-row>
+    <br>
+    <ion-row *ngIf="ViewPremiun">
+      <ion-col col-6 text-left class="padding-left-100">{{ 'ACCOUNT_ENDS' | translate }}:</ion-col>
+      <ion-col col-6 text-right class="padding-right-80">
+        <label class="label-color-red">{{accountServiceEnds}}</label>
+      </ion-col>
+    </ion-row>
+
+    <br>
+    <br>
+    <br>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,216 @@
+page-list-project-team {
+  .toolbar {
+      min-height: 60px !important;
+  }
+  .title {      
+      font-size: 18px !important;      
+  }
+ .toolbar-background {
+     background-color: #ffffff;     
+ }
+ .toolbar-title {
+    color: #000000;
+    text-align: left;
+    font-size: 18px;
+    padding: 0px !important;
+ }
+ .btnAdd-PT {
+    color: #488AFF;
+    background-color: #F4F5F8;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+ }
+ .content {
+    background-color: #EBEBEB;
+ }
+ .scroll-content {
+    padding: 0px !important;
+ }
+ .project-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 16px;
+    margin-bottom: 0px;
+    margin-top: 16px;
+ }
+ .project-subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 68px;
+    margin-top: 1px;
+    margin-bottom: 16px;
+}
+.list {
+   padding-top: 0px;  
+   padding-bottom: 0px; 
+   margin-bottom: 0px;
+}
+ .ptmember-item {
+    border-left: 0px solid #FFFFFF;
+    border-bottom: 1px solid #DEDEDE !important;
+    min-height: 76px;
+ }
+ .ptmember-avatar {
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   margin: 10px 12px 12px 12px !important;
+ }
+ .item-inner {
+    margin-left: 78px !important;
+    padding: 0px !important;
+    margin-right: 12px !important;
+ }
+ .avatardarkletters {
+    text-align: center;
+    font-size: 16px;
+    vertical-align: 4px;
+    color: #3f4965;
+    display: block;
+    font-weight: normal;
+ }
+ .avatarletters {
+   font-size: 18px;
+   color: #3f4965;
+   font-weight: normal;
+ }
+ .ptmember-info {
+    height: 100% !important;
+    margin: 0px !important;
+    font-size: small;
+ }
+ .label {
+    position: relative;
+    height: 100% !important;
+    margin: 0px !important;
+ }
+ .ptMember-name {
+    height: 19px;
+    margin: 0px !important;
+    font-size: 16px !important;
+    font-weight: 500;
+    color: #030404;
+ }
+ .ptMember-position  {
+    height: 15px;
+    margin: 4px 0px 0px 0px !important;
+    font-size: 13px !important;
+    color: #797D80;
+ }
+ .ptMember-addedby {
+    color: #35B968;
+    text-align: right;
+    font-size: 12px !important;
+    width: 100%;
+    font-style: italic;
+    font-weight: 400;
+ }
+ .ptMember-invitedby {
+    color: #1CC1F1;
+    text-align: right;
+    font-size: 12px;
+    width: 100%;
+    font-style: italic;
+    font-weight: 400;
+ }
+ .ptMember-checkbox {
+     display: inline;
+     margin: 0px !important;     
+ }
+ .checkbox-icon{
+   margin: 18px 0px 0px 0px !important;
+ }
+ .vertical-align {
+   margin: 0;
+   position: absolute;
+   top: 49%;
+   -ms-transform: translateY(-50%);
+   transform: translateY(-50%);
+ } 
+ .top-align {
+   padding-top: 4px;   
+ } 
+ .bottom-align {   
+    padding-right: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 10px;
+} 
+ .avatardarkletters {
+    font-size: 18px;
+ }
+ .icon-add{
+    font-weight: 600 !important;
+    font-size: 1.45em !important;
+ }
+ .divItem {
+    min-height: 40px;
+    display: inline-flex;
+    width: 100%;
+ }
+ .divItemLeft{    
+    width: 100%;
+    margin-top: 18px;
+    //float: left;
+}
+.divItemRight{		
+    /*min-width: 59px;*/
+    /*min-height: 90px;
+    float: right;*/
+}
+.displayFlex {
+    display: flex;
+}
+ion-checkbox .item-cover{
+    /*uncomment to click the whole item to enable checkbox*/
+    display:none;
+}
+.item-no-indicator {
+    border-left: 2px solid #ffffff;
+}
+.footer {
+    height: 48px !important;
+}
+.footer-toolbar {
+    min-height: 48px !important;
+    height: 48px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.btnCancelFull {
+   background-color: #F4F5F8 !important;
+   border: none !important;
+   color: #2D2F2E !important;
+   height: 48px !important;
+   opacity: 1 !important;
+   min-width: 100% !important;
+   padding: 4px 0 0 0 !important;
+   font-size: 16px !important;
+   font-weight: 500 !important;
+}
+.btnCancel {
+    background-color: #F4F5F8 !important;
+    border: none !important;
+    color: #2D2F2E !important;
+    height: 48px !important;
+    opacity: 1 !important;    
+    padding: 4px 0 0 0 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+.btnRemove {
+    background-color: #3C82FC !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    height: 48px !important;
+    opacity: 1 !important;    
+    padding: 4px 0 0 0 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+.bottom-separator {
+   height: 48px;
+}
+}

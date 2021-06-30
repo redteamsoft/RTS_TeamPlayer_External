@@ -1,0 +1,24 @@
+page-list-customers { 
+	.list-md .item-block .item-inner {
+		height: 90px;
+	}
+	.item-md.item-block .item-inner {
+		padding-right: 8px;
+		border-bottom: 1px solid #dedede;  
+	}
+
+	.list-ios .item-block .item-inner {
+		height: 90px;
+	}
+	.item-ios.item-block .item-inner {
+		padding-right: 8px;
+		border-bottom: 1px solid #dedede;  
+	}
+
+	.item {
+		opacity: 1;
+	}
+}
+ 
+
+

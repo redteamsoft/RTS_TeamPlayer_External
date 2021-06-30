@@ -1,0 +1,236 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="white">
+    <ion-buttons left>
+      <button (click)="cancelModal()" ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="font-size-18">{{'BILL_THIS_PERIOD' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid-1 font-size-14">
+    <ion-row>
+      <ion-col col-12 class="padding-col word-break">
+        <b>{{Line + 1}}. {{CostCode}} - {{Description}}</b>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="grid-2">
+    <ion-row radio-group [(ngModel)]="PreferenceBilling" class="row-progress bg-gray row-rd-preference">
+      <ion-col class="radio-col" style="max-width: 152px;">
+        <ion-item class="this-period-item font-size-12 padding-0 bg-gray">
+          <ion-label class="label-radio padding-rd-preference"> {{'BILL_LINE_PREFERENCE_THIS_PERIOD' | translate}}
+          </ion-label>
+          <ion-radio value="ThisPeriod" class="margin-right-0 padding-rd-preference"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col class="radio-col">
+        <ion-item class="completed-to-date-item font-size-12 padding-0 bg-gray">
+          <ion-label class="label-radio margin-left-25 padding-rd-preference">
+            {{'BILL_LINE_PREFERENCE_COMPLETED_DATE' | translate}}</ion-label>
+          <ion-radio value="CompletedToDate" class="margin-right-0 padding-rd-preference"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_CONTRACT_VALUE_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_CONTRACT_VALUE' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6 text-right class="styleColumnLabel">
+        <label>{{UnitCost | number:'1.2-2'}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-line"></ion-row>
+    <ion-row class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_LESS_PRIOR_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_LESS_PRIOR' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6 text-right class="styleColumnLabel">
+        <label>{{PriorBilling | number:'1.2-2'}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-line"></ion-row>
+    <ion-row *ngIf="PreferenceBilling == 'ThisPeriod'" radio-group [(ngModel)]="EnterPeriod"
+      class="row-progress row-height-rd">
+      <ion-col class="radio-col col-rd-amount">
+        <ion-item class="amount-item font-size-12 padding-0">
+          <ion-label class="label-radio lb-margin-top">{{'AMOUNT_LABEL' | translate}}</ion-label>
+          <ion-radio value="amount" class="radio-button-completed margin-right-0 rd-margin-top"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col class="radio-col" style="height: 36px;">
+        <ion-item class="percent-item font-size-12 padding-0">
+          <ion-label class="label-radio margin-left-25 lb-margin-top">{{'PERCENT_LABEL' | translate}}</ion-label>
+          <ion-radio value="percent" class="radio-button-completed margin-right-0 rd-margin-top"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="PreferenceBilling == 'CompletedToDate'" class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_THIS_PERIOD_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_THIS_PERIOD' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item class="styleInputReadOnly widthBox">
+          <ion-input type="tel" [(ngModel)]="ThisPeriod" text-right readonly class="input-amount"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="PreferenceBilling == 'ThisPeriod' && EnterPeriod == 'amount'" class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_THIS_PERIOD_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_THIS_PERIOD' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item class="styleInput widthBox">
+          <ion-input type="tel" [(ngModel)]="ThisPeriod" text-right class="input-amount"
+            (ionBlur)="onChangeThisPeriod(oldValue)" (ionFocus)="oldValue = onFocusThisPeriod()"
+            (keydown)="runKeyDown($event)" (click)="$event.target.select()"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="PreferenceBilling == 'ThisPeriod' && EnterPeriod == 'percent'" class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_THIS_PERIOD_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_THIS_PERIOD_PERCENT' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item class="styleInput widthBox">
+          <ion-input type="tel" [(ngModel)]="ThisPeriodPercent" text-right class="input-amount"
+            (ionBlur)="onChangeThisPeriodPercent(oldValue)" (ionFocus)="oldValue = onFocusThisPeriodPercent()"
+            (keydown)="runKeyDown($event)" (click)="$event.target.select()"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-line"></ion-row>
+    <ion-row class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_PRESENTLY_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_PRESENTLY_STORED' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item class="styleInput widthBox">
+          <ion-input type="tel" (ionBlur)="onChangePresently(oldValue)" [(ngModel)]="PresentlyStored"
+            (ionFocus)="oldValue = onFocusPresently()" (click)="$event.target.select()" text-right class="input-amount"
+            (keydown)="runKeyDown($event)">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-line"></ion-row>
+    <ion-row *ngIf="PreferenceBilling == 'CompletedToDate'" radio-group [(ngModel)]="EnterProgress"
+      class="row-progress row-height-rd">
+      <ion-col class="radio-col col-rd-amount">
+        <ion-item class="amount-item font-size-12 padding-0">
+          <ion-label class="label-radio lb-margin-top">{{'AMOUNT_LABEL' | translate}}</ion-label>
+          <ion-radio value="amount" class="radio-button-completed margin-right-0 rd-margin-top"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col class="radio-col" style="height: 36px;">
+        <ion-item class="percent-item font-size-12 padding-0">
+          <ion-label class="label-radio margin-left-25 lb-margin-top">{{'PERCENT_LABEL' | translate}}</ion-label>
+          <ion-radio value="percent" class="radio-button-completed margin-right-0 rd-margin-top"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="PreferenceBilling == 'ThisPeriod'" class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_COMPLETED_DATE_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_COMPLETED_DATE' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item class="styleInputReadOnly widthBox">
+          <ion-input type="tel" [(ngModel)]="CompletedToDate" text-right class="input-amount" readonly>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="EnterProgress == 'amount' && PreferenceBilling == 'CompletedToDate'" class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_COMPLETED_DATE_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_COMPLETED_DATE' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item class="styleInput widthBox">
+          <ion-input type="tel" (ionBlur)="onChangeCompletedToDate(oldValue)" (click)="$event.target.select()"
+            (ionFocus)="oldValue = onFocusCompletedToDate()" [(ngModel)]="CompletedToDate" text-right
+            class="input-amount" (keydown)="runKeyDown($event)">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="EnterProgress == 'percent' && PreferenceBilling == 'CompletedToDate'" class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_PROGRESS_PERCENT_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_ACUMULATIVE_COMPLETE' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item class="styleInput widthBox">
+          <ion-input type="tel" [(ngModel)]="AcumulativeComplete" (ionBlur)="onChangePercent(oldValue)"
+            (ionFocus)="oldValue = onFocusPercent()" (click)="$event.target.select()" text-right class="input-amount"
+            (keydown)="runKeyDown($event)">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-line"></ion-row>
+    <ion-row class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_COMPLETED_STORED_WARNING)" ion-button clear small
+          class="label-button">
+          {{'BILL_LINE_COMPLETED_STORED' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6 text-right class="styleColumnLabel">
+        <label>{{CompletedStored | number:'1.2-2'}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-line"></ion-row>
+    <ion-row class="row-height">
+      <ion-col col-6 text-left class="styleColumn">
+        <button type="button" (click)="ToolTip(BILL_LINE_OPEN_WARNING)" ion-button clear small class="label-button">
+          {{'BILL_LINE_OPEN' | translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6 text-right class="styleColumnLabel">
+        <label>{{Open | number:'1.2-2'}}</label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <br>
+</ion-content>
+
+<ion-footer style="display: inline-flex;">
+  <button (click)="cancelModal()" style="height: 56px;" ion-button full outline
+    icon-start>{{'BILL_BTN_CANCEL' | translate}}</button>
+  <button (click)="confirmModal()" style="height: 56px;" ion-button full
+    icon-start>{{'BILL_BTN_SAVE' | translate}}</button>
+</ion-footer>

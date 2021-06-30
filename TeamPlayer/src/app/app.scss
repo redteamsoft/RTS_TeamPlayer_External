@@ -1,0 +1,651 @@
+// http://ionicframework.com/docs/v2/theming/
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@import "../assets/fonts/css/fontello.css";
+
+.backgroundFloatMenu {
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  display: none;
+  background-color: white;
+  position: relative;
+  z-index: 99;
+}
+
+.btn-padding {
+  padding: 8px 25px 8px 25px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.toolbar-md-white .bar-button-clear-md,
+.toolbar-md-white .bar-button-default-md,
+.toolbar-md-white .bar-button-outline-md,
+.toolbar-md-white .toolbar-title-md {
+  color: #ff8c07;
+}
+
+.cursorContext {
+  cursor: context-menu;
+}
+
+.item-md {
+  padding-left: 0px;
+}
+
+.item-ios {
+  padding-left: 0px;
+}
+
+.ion-label-customer {
+  margin-top: 20px;
+  font-weight: 500;
+  white-space: normal;
+  padding-left: 12px;
+}
+
+.text-input-md {
+  color: #030404;
+}
+
+.text-input-ios {
+  color: #030404;
+}
+
+.profile-padding {
+  padding: 24px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.toolbar-title-md {
+  padding: 0 12px;
+  font-size: 22px;
+  font-weight: normal;
+  color: #ffffff;
+  text-align: center;
+}
+
+.toolbar-title-ios {
+  padding: 0 12px;
+  font-size: 22px;
+  font-weight: normal;
+  color: #ffffff;
+  text-align: center;
+}
+
+.detailcontainer {
+  display: -webkit-inline-box;
+  width: -webkit-stretch;
+  margin-top: -5px;
+}
+
+.rigthdiv {
+  padding-left: 8px;
+  padding-right: 100px;
+  color: #030404;
+}
+
+.leftdiv {
+  width: 90px;
+  text-align: right;
+  color: #727373;
+  opacity: 1;
+  font-weight: 500;
+}
+
+.statusHeader {
+  width: 100%;
+  padding-right: 10px;
+  margin-top: -5px;
+  text-align: right;
+  color: #ff8c07;
+}
+
+.toolbar .searchbar-md {
+  padding: 3px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.toolbar .searchbar-ios {
+  padding: 3px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.toolbar .searchbar-ios .searchbar-input {
+  background: #ffffff;
+}
+
+.scroll-content {
+  overflow-y: auto;
+}
+
+.menu-col {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 70%;
+  max-width: 70%;
+}
+
+.menu-sign-out {
+  float: right;
+  font-size: 16px;
+  color: #3f4965;
+  font-family: "Roboto", "Medium";
+  font-weight: bold;
+  background-color: white;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.ios .menu-sign-out {
+  top: 70px;
+  right: 0px;
+}
+
+.ios .bluecircleletters {
+  margin-left: -7px;
+}
+
+.toolbar-md {
+  padding: 0px;
+  min-height: 65px;
+}
+
+.toolbar-ios {
+  padding: 0px;
+  min-height: 65px;
+}
+
+.list-md .item-block .item-inner {
+  border-bottom: 0px solid #dedede;
+}
+
+.list-ios .item-block .item-inner {
+  border-bottom: 0px solid #dedede;
+}
+
+.orange-circle {
+  border: 1px solid #ff8c07;
+  border-radius: 100% !important;
+  width: 54px !important;
+  height: 54px !important;
+  font-size: 28px !important;
+}
+
+.icon-center {
+  margin: auto;
+  display: table;
+  padding-top: 9px;
+}
+
+.orange-circle-background {
+  background: #ff8c07;
+  border-radius: 100%;
+  width: 54px;
+  height: 54px;
+  font-size: 28px;
+}
+
+.blue-light-circle-background {
+  background: #d7ecfe;
+  border-radius: 100%;
+  width: 54px;
+  height: 54px;
+  font-size: 28px;
+}
+
+.orange-circle-profle {
+  background: #ff8c07;
+  border-radius: 100%;
+  width: 81px;
+  height: 81px;
+  font-size: 28px;
+}
+
+.avatarletters {
+  font-size: 16px;
+  vertical-align: 4px;
+  color: white;
+  font-weight: normal;
+  display: -webkit-box;
+  text-align: -webkit-center;
+}
+
+.avatardarkletters {
+  font-size: 16px;
+  vertical-align: 4px;
+  color: #3f4965;
+  font-weight: normal;
+  display: -webkit-box;
+  text-align: -webkit-center;
+}
+
+.ios .avatarletters {
+  margin-left: -10px;
+}
+
+.avatarletters-profile {
+  font-size: 28px;
+  color: white;
+  font-weight: normal;
+  display: -webkit-box;
+  display: -webkit-box;
+  text-align: -webkit-center;
+}
+
+.ios .avatarletters-profile {
+  margin-left: -5px;
+}
+.segment-md .segment-button {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 0;
+  height: 4.2rem;
+  border: #ff8c07 2px solid;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 4rem;
+  text-transform: unset;
+  color: #ff8c07;
+  background-color: transparent;
+  opacity: 0.7;
+  -webkit-transition: 100ms all linear;
+  transition: 100ms all linear;
+  padding: 0 6px;
+}
+
+.segment-ios .segment-button {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 0;
+  height: 4.2rem;
+  border: #ff8c07 2px solid;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 4rem;
+  text-transform: unset;
+  color: #ff8c07;
+  background-color: transparent;
+  opacity: 0.7;
+  -webkit-transition: 100ms all linear;
+  transition: 100ms all linear;
+  padding: 0 6px;
+  min-width: 50%;
+}
+
+.segment-md .segment-button.activated,
+.segment-md .segment-button.segment-activated {
+  background-color: #ff8c07;
+  color: #3f4965;
+  border-color: #ff8c07;
+}
+
+.segment-ios .segment-button.activated,
+.segment-ios .segment-button.segment-activated {
+  background-color: #ff8c07;
+  color: #3f4965;
+  border-color: #ff8c07;
+}
+
+.toolbar .segment-md {
+  font-size: 22px;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+.toolbar .segment-ios {
+  font-size: 22px;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+.bar-button-default-md,
+.bar-button-clear-md-default,
+.bar-button-md-default {
+  color: #ff8c07;
+  background-color: transparent;
+}
+
+.bar-button-default-ios,
+.bar-button-clear-ios-default,
+.bar-button-ios-default {
+  color: #ff8c07;
+  background-color: transparent;
+}
+
+.bar-button-default-md:hover:not(.disable-hover),
+.bar-button-clear-md-default:hover:not(.disable-hover),
+.bar-button-md-default:hover:not(.disable-hover) {
+  color: #ff0000;
+}
+
+.md .bar-button-default-md:hover:not(.disable-hover),
+.bar-button-clear-md-default:hover:not(.disable-hover),
+.bar-button-md-default:hover:not(.disable-hover) {
+  color: #488aff;
+}
+
+.bar-button-default-ios:hover:not(.disable-hover),
+.bar-button-clear-ios-default:hover:not(.disable-hover),
+.bar-button-ios-default:hover:not(.disable-hover) {
+  color: #ff0000;
+}
+
+.toolbar-background-md {
+  border-color: #3f4965;
+  background: #3f4965;
+}
+
+.toolbar-background-ios {
+  border-color: #3f4965;
+  background: #3f4965;
+}
+
+.button-md-primary {
+  color: white;
+  background-color: #fb8926;
+  border-radius: 25px;
+  font-size: 16px;
+  height: 48px;
+  font-family: Roboto, Medium;
+  text-transform: none;
+}
+
+.button-ios-primary {
+  color: white;
+  background-color: #fb8926;
+  border-radius: 25px;
+  font-size: 16px;
+  height: 48px;
+  font-family: Roboto, Medium;
+  text-transform: none;
+}
+
+.button-md-primary:hover:not(.disable-hover) {
+  background-color: #ffffff;
+  color: #fb8926;
+}
+
+.button-ios-primary:hover:not(.disable-hover) {
+  background-color: #ffffff;
+  color: #fb8926;
+}
+
+.button-md-primary.activated {
+  background-color: #fb8926;
+  color: white;
+  opacity: 1;
+}
+
+.button-ios-primary.activated {
+  background-color: #fb8926;
+  color: white;
+  opacity: 1;
+}
+
+.button-md-primary .button-effect {
+  background-color: #fff;
+}
+
+.button-ios-primary .button-effect {
+  background-color: #fff;
+}
+
+.button-md-secondary {
+  color: #fb8926;
+  background-color: #ffffff;
+  border-radius: 25px;
+  font-size: 16px;
+  height: 48px;
+  font-family: Roboto, Medium;
+  text-transform: none;
+}
+
+.button-ios-secondary {
+  color: #fb8926;
+  background-color: #ffffff;
+  border-radius: 25px;
+  font-size: 16px;
+  height: 48px;
+  font-family: Roboto, Medium;
+  text-transform: none;
+}
+
+.button-md-secondary:hover:not(.disable-hover) {
+  background-color: #fb8926;
+  color: #ffffff;
+}
+
+.button-ios-secondary:hover:not(.disable-hover) {
+  background-color: #fb8926;
+  color: #ffffff;
+}
+
+.button-md-secondary.activated {
+  background-color: #ffffff;
+  color: #fb8926;
+  opacity: 1;
+}
+
+.button-ios-secondary.activated {
+  background-color: #ffffff;
+  color: #fb8926;
+  opacity: 1;
+}
+
+.button-md-secondary .button-effect {
+  background-color: #fb8926;
+}
+
+.button-ios-secondary .button-effect {
+  background-color: #fb8926;
+}
+
+.spinner-loading {
+  width: 28px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  height: 34px;
+}
+
+.loading-bar {
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  border-radius: 4px;
+  animation: loading 1s ease-in-out infinite;
+}
+.loading-bar:nth-child(1) {
+  background-color: #3498db;
+  animation-delay: 0;
+}
+.loading-bar:nth-child(2) {
+  background-color: #c0392b;
+  animation-delay: 0.09s;
+}
+.loading-bar:nth-child(3) {
+  background-color: #f1c40f;
+  animation-delay: 0.18s;
+}
+.loading-bar:nth-child(4) {
+  background-color: #27ae60;
+  animation-delay: 0.27s;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1, 2.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.content-md {
+  background-color: #f1f9ff;
+}
+
+.content-ios {
+  background-color: #f1f9ff;
+}
+
+.list-md {
+  padding: 8px;
+}
+
+.list-ios {
+  padding: 8px;
+}
+
+ion-item-sliding .item {
+  color: #3f4965;
+  background-color: white;
+}
+.border-list {
+  border-left: 2px solid #ff8c07;
+  padding-left: 10px;
+}
+
+.list-ios .item-block:first-child {
+  border-top: 0px solid #c8c7cc;
+}
+
+.list-ios .item-block:last-child,
+.list-ios .item-wrapper:last-child .item-block {
+  border-bottom: 0px solid #c8c7cc;
+}
+
+.list-header-ios {
+  padding-left: 16px;
+  padding-left: 16px;
+  position: relative;
+  border-bottom: 0px solid #c8c7cc;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: #333;
+  background: transparent;
+}
+
+.item-ios [item-left],
+.item-ios [item-right],
+.item-ios [item-start],
+.item-ios [item-end] {
+  margin-left: 0px;
+}
+
+.background-white {
+  background-color: white;
+}
+
+.filter-popover {
+  .popover-content {
+    overflow: hidden;
+    width: 204px !important;
+    .list-md {
+      padding: 0px;
+    }
+    .item-md {
+      padding: 0px 12px;
+      border-bottom: 1px solid #00000038;
+      .item-inner {
+        padding-right: 0px;
+        .input-wrapper {
+          ion-label {
+            color: #030404;
+          }
+        }
+        .radio-md {
+          margin-right: 1px;
+        }
+      }
+    }
+  }
+}
+
+.popover-content {
+  width: 196px !important;
+  border-radius: 2px !important;
+  box-shadow: 0px 6px 18px #00000029 !important;
+  margin-top: 6px !important;
+}
+
+.popover-md .popover-content {
+  width: 196px !important;
+  border-radius: 2px !important;
+  -webkit-box-shadow: 0px 6px 18px #00000029 !important;
+  box-shadow: 0px 6px 18px #00000029 !important;
+  margin-top: 36px !important;
+}
+
+.popover-ios .popover-content {
+  width: 196px !important;
+  border-radius: 2px !important;
+  -webkit-box-shadow: 0px 6px 18px #00000029 !important;
+  box-shadow: 0px 6px 18px #00000029 !important;
+  margin-top: 0 !important;
+}
+
+.projectMenu-popover .item-ios {
+  background-color: #fafafa !important;
+  background: #fafafa !important;
+}
+
+.billing-floating-margin {
+  margin-bottom: 45px;
+}
+
+.popover-arrow {
+  display: none !important;
+}
+
+.projectMenu-popover {
+  padding: 0px;
+}
+
+.project-popover ion-backdrop {
+  opacity: 0 !important;
+}
+
+.checkbox-md .checkbox-checked {
+  border-color: #488aff !important;
+  background-color: #488aff !important;
+}
+
+.checkbox-icon {
+  height: 18px !important;
+  width: 18px !important;
+  border-color: #aeaeae !important;
+}
+
+.popover-ios .popover-arrow {
+  display: block !important;
+}
+
+

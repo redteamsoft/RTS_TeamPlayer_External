@@ -1,0 +1,54 @@
+<!--
+  Generated template for the ListProjectTeamAddPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'PROJECT_TEAM_ADD_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-searchbar (ionInput)="getFilteredItems($event)" class="noshadow"></ion-searchbar>
+
+  <ion-list *ngIf="!showNoUsers; else noUsersMessage"> 
+    <ion-item-group *ngFor="let group of groupedTeamMembers">
+      <ion-item-divider color="light" class="separator-letter" style="padding-left: 27px;border: none;">{{group.letter}}</ion-item-divider>    
+      <ion-item *ngFor="let contact of group.teamMembers" (click)="openPTProfile(contact)" class="border-list" [ngClass]="contact.InvitationStatus_tp === 'Accepted' ? '' : 'item-no-indicator'">        
+        <ion-avatar item-start> 
+          <button class="blue-light-circle-background">
+            <span class="avatarletters">{{contact.FirstName_tp.charAt(0) | uppercase}}{{contact.LastName_tp.charAt(0) | uppercase}}</span>
+          </button>
+        </ion-avatar>
+        <ion-label style="font-size: small;" class="label-text-container">
+          <div class="divItem">
+            <div class="divItemLeft">
+              <p class="ptMember-name" [ngClass]="contact.Position_tp ? '' : 'vertical-align'">{{contact.fullname}} {{contact.lastname}}</p> 
+              <p class="ptMember-position" item-end>{{contact.Position_tp}}</p>
+            </div>
+            <div class="divItemRight">
+              <ion-checkbox (ionChange)="checkEvent($event, contact)" [checked]="contact.checked" class="ptMember-checkbox"></ion-checkbox>
+            </div>
+          </div>
+        </ion-label>      
+      </ion-item>    
+    </ion-item-group>  
+  </ion-list>
+  <ng-template #noUsersMessage>    
+    <p class="no-Users">There are no users available to be added to the Team.</p>          
+  </ng-template>
+  <div class="bottom-separator">&nbsp;</div>
+  <div class="bottom-separator" [hidden]="hideToolbar">&nbsp;</div>
+</ion-content>
+
+<ion-footer class="ion-no-border" [hidden]="hideToolbar">
+  <ion-toolbar class="footer-toolbar">
+    <ion-segment [(ngModel)]="poiqwe">
+      <ion-segment-button value="false" (click)="footerCancel()" class="btnCancel">Cancel</ion-segment-button>
+      <ion-segment-button value="false" (click)="footerAdd()" class="btnAdd">Add</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

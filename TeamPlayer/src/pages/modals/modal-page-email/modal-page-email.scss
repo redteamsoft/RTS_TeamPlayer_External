@@ -1,0 +1,113 @@
+page-modal-page-email {
+  .scroll-content {
+    padding: 16px 8px 16px 8px !important;
+  }
+
+  [col-6] {
+    padding: 5px 0 5px 0;
+  }
+
+  .bar-buttons-md[left] {
+    margin: 0px 6px 0px 6px;
+    padding: 0px 5px 0px 5px;
+  }
+
+  .toolbar-title-md {
+    color: #030404 !important;
+    text-align: left;
+  }
+
+  .content-md {
+    background-color: #ebebeb;
+    color: #030404;
+  }
+
+  .text-input-md {
+    margin: 0px 0px 0px 0px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+  .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border-bottom-color: transparent;
+    -webkit-box-shadow: inset 0 -1px 0 0 transparent;
+    box-shadow: inset 0 0 0 0 transparent;
+  }
+
+  .item-md.item-input.item-input-has-focus .item-inner,
+  .item-md.item-input.input-has-focus .item-inner {
+    border-color: #ff8c07 !important;
+    -webkit-box-shadow: inset 0 0 0 0 #ff8c07 !important;
+    box-shadow: inset 0 0 0 0 #ff8c07 !important;
+  }
+
+  .font-size-18 div {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .label-button {
+    padding: 0;
+    margin-left: 0px;
+    text-transform: none;
+    font-weight: normal;
+    font-size: 12px;
+  }
+
+  .row-line {
+    border-bottom: 1px solid #dedede;
+  }
+
+  .grid-2 {
+    background-color: #fff;
+    padding: 0;
+  }
+
+  .row-height {
+    height: 58px;
+    padding: 0 10px 0 20px;
+  }
+
+  .item-md.item-block .item-inner {
+    border-bottom: 0;
+  }
+
+  .item-radio-checked.item-md ion-label {
+    color: #707070;
+  }
+
+  .item-md .radio-md {
+    position: static;
+    display: block;
+    margin: 0;
+  }
+
+  .padding-0.item-md.item-block .item-inner {
+    padding: 0;
+  }
+
+  .item-ios.item-block .item-inner {
+    border-bottom: 0;
+  }
+
+  .text-input-ios {
+    margin: 0;
+  }
+
+  .ion-tags-input .iti-input {
+    width: 100% !important;
+  }
+
+  .ion-tags-input .iti-input {
+    color: #030404 !important;
+  }
+
+  .clear-weight {
+    display: initial;
+  }
+
+  .label-tags.label-md[stacked] {
+    color: #999;
+  }
+}

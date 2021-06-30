@@ -1,0 +1,7 @@
+{
+  "android": "1.0.27",
+  "androidvalidate": "yes",
+  "ios": "1.0.27", 
+  "iosvalidate": "yes",
+  "browser": "1.0.27"
+}

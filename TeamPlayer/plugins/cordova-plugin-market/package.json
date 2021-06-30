@@ -1,0 +1,57 @@
+{
+  "_from": "git+https://github.com/xmartlabs/cordova-plugin-market.git",
+  "_id": "cordova-plugin-market@1.2.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-market",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/xmartlabs/cordova-plugin-market",
+    "rawSpec": "https://github.com/xmartlabs/cordova-plugin-market",
+    "saveSpec": "git+https://github.com/xmartlabs/cordova-plugin-market.git",
+    "fetchSpec": "https://github.com/xmartlabs/cordova-plugin-market.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/xmartlabs/cordova-plugin-market.git#44b058abf668c0f810389d96598579ef729853b4",
+  "_spec": "https://github.com/xmartlabs/cordova-plugin-market",
+  "_where": "D:\\RedTeamProjects\\TeamPlayerProject\\RTS_TeamPlayer\\TeamPlayer",
+  "author": {
+    "name": "Xmartlabs"
+  },
+  "bugs": {
+    "url": "https://github.com/xmartlabs/cordova-plugin-market/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-market",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Plugin for access to Google Play and Apple Store within your app",
+  "homepage": "https://github.com/xmartlabs/cordova-plugin-market#readme",
+  "keywords": [
+    "cordova",
+    "market",
+    "store",
+    "itunes",
+    "play",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-market",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xmartlabs/cordova-plugin-market.git"
+  },
+  "version": "1.2.0"
+}

@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'EDIT_INFORMATION' | translate }}</ion-title>
+    <ion-buttons end style="padding-right: 9px;">
+      <button ion-button icon-only class="cursorContext" (click)="openModalHelp()">
+        <ion-icon name="ios-help-circle-outline" style="font-weight: bold;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <form (ngSubmit)="doSave()" [formGroup]="profileForm" class="widthForm">
+      <div class="profile-padding" class="profile-edit-padding">
+        <div style="padding: 0px 0px 22px 8px;">
+          <span class="info-title">{{ 'SEGMENT_PROFILE_LABEL' | translate }}</span>
+        </div>
+        <ion-item>
+          <ion-label floating>{{ 'FIRST_NAME' | translate }}<span style="color: #FF8C07"> *</span></ion-label>
+          <ion-input type="text" name="firstname" formControlName="firstname">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'LAST_NAME' | translate }}<span style="color: #FF8C07"> *</span></ion-label>
+          <ion-input type="text" name="lastname" formControlName="lastname"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'POSITION' | translate }}</ion-label>
+          <ion-input type="text" name="userposition" formControlName="userposition">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'MOBILE' | translate }}</ion-label>
+          <ion-input type="number" name="mobile" autocomplete="off" autocorrect="off" formControlName="mobile">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'EMAIL' | translate }}<span style="color: #FF8C07"> *</span></ion-label>
+          <ion-input type="email" name="email" disabled="true" formControlName="email">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'PASSWORD' | translate }}<span style="color: #FF8C07"> *</span></ion-label>
+          <ion-input [type]="passwordType" (input)="showeyeicon(profileForm.controls.password.value,1)" name="password"
+            clearOnEdit="false" formControlName="password"></ion-input>
+        </ion-item>
+        <div class="eyepass" *ngIf="eyeShow" (click)="togglePassword(1)" style="margin-top: -42px;">
+          <ion-icon [name]="passwordIconEye"></ion-icon>
+        </div>
+        <ion-item style="padding-bottom: 10px;">
+          <ion-label floating>{{ 'CONFIRM_PASSWORD' | translate }}<span style="color: #FF8C07"> *</span></ion-label>
+          <ion-input [type]="confirmpasswordType" (input)="showeyeicon(profileForm.controls.confirmpassword.value,2)"
+            name="confirmpassword" clearOnEdit="false" formControlName="confirmpassword"></ion-input>
+        </ion-item>
+        <div class="eyepass" *ngIf="confirmeyeShow" (click)="togglePassword(2)"
+          style="margin-top: -52px;padding-bottom: 12px;">
+          <ion-icon [name]="confirmpasswordIconEye"></ion-icon>
+        </div>
+      </div>      
+      
+      <ion-card *ngIf="profileForm.controls['password'].errors?.pattern">
+        <div class="errorPassword">
+          <ion-icon ios="ios-warning" md="md-warning"></ion-icon> Password must be minimum 6 characters and may only include these symbols: <strong>$@!%*?&</strong>
+        </div>
+      </ion-card>
+
+      <ion-card *ngIf="profileForm.controls['confirmpassword'].errors?.mustMatch">
+        <div class="errorPassword">
+          <ion-icon ios="ios-warning" md="md-warning"></ion-icon> Passwords must match
+        </div>
+      </ion-card>
+      <div class="profile-edit-padding">
+        <div style="padding: 0px 0px 22px 8px;">
+          <span class="info-title">{{ 'SEGMENT_COMPANY_LABEL' | translate }}</span>
+        </div>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_NAME' | translate }}<span style="color: #FF8C07"> *</span></ion-label>
+          <ion-input type="text" name="companyname" disabled="{{isDisabled}}" formControlName="companyname">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_ADDRESS' | translate }}</ion-label>
+          <ion-input type="text" name="address" disabled="{{isDisabled}}" formControlName="address"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_CITY' | translate }}</ion-label>
+          <ion-input type="text" name="city" disabled="{{isDisabled}}" formControlName="city"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_STATEORPROVINCE' | translate }}</ion-label>
+          <ion-input type="text" name="stateorprovince" disabled="{{isDisabled}}" formControlName="stateorprovince">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_ZIPCODE' | translate }}</ion-label>
+          <ion-input type="number" name="zipcode" disabled="{{isDisabled}}" autocomplete="off" autocorrect="off"
+            formControlName="zipcode"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_COUNTRY' | translate }}</ion-label>
+          <ion-input type="text" name="country" disabled="{{isDisabled}}" formControlName="country"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>{{ 'COMPANY_PROFILE_WEBPAGE' | translate }}</ion-label>
+          <ion-input type="text" name="webpage" disabled="{{isDisabled}}" formControlName="webpage"></ion-input>
+        </ion-item>
+        <ion-item style="padding-bottom: 10px;">
+          <ion-label floating>{{ 'COMPANY_PROFILE_PHONENUMBER' | translate }}</ion-label>
+          <ion-input type="number" name="phonenumber" autocomplete="off" autocorrect="off" disabled="{{isDisabled}}"
+            formControlName="phonenumber"></ion-input>
+        </ion-item>
+      </div>
+      <div class="btn-padding">
+        <button ion-button class="btn-confirm" color="primary" [disabled]="!profileForm.valid" type="submit"
+          block>{{ 'SAVE_BUTTON' | translate }}</button>
+      </div>
+    </form>
+  </ion-list>
+</ion-content>

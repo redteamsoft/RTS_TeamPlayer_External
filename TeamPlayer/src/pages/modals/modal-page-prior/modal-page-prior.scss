@@ -1,0 +1,186 @@
+page-modal-page-prior {
+  .scroll-content {
+    padding: 16px 8px 16px 8px !important;
+  }
+
+  .styleColumn {
+    align-content: center;
+  }
+
+  .styleColumnLabel {
+    height: 56px;
+    padding-top: 18px;
+    padding-right: 20px;
+  }
+
+  .bar-buttons-md[left] {
+    margin: 0px 6px 0px 6px;
+    padding: 0px 5px 0px 5px;
+  }
+
+  .toolbar-title-md {
+    color: #030404 !important;
+    text-align: left;
+  }
+
+  .content-md {
+    background-color: #ebebeb;
+    color: #030404;
+  }
+
+  .text-input-md {
+    margin: 0px 0px 0px 0px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+  .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border-bottom-color: transparent;
+    -webkit-box-shadow: inset 0 -1px 0 0 transparent;
+    box-shadow: inset 0 0 0 0 transparent;
+  }
+
+  .styleInputReadOnly {
+    border-bottom-color: transparent !important;
+    -webkit-box-shadow: inset 0 0px 0 0 transparent !important;
+    box-shadow: inset 0 0px 0 0 transparent !important;
+    min-height: 3rem;
+    margin: 0;
+    width: 135px;
+    float: right;
+  }
+
+  .styleInputReadOnly .item-inner {
+    border: 0 !important;
+    background-color: #fffb7f;
+    padding-right: 10px !important;
+  }
+
+  .item-md.item-input.item-input-has-focus .item-inner,
+  .item-md.item-input.input-has-focus .item-inner {
+    border-bottom-color: transparent;
+    -webkit-box-shadow: inset 0 0 0 0 transparent;
+    box-shadow: inset 0 0 0 0 transparent;
+  }
+
+  .word-break {
+    word-break: break-all;
+  }
+
+  .font-size-12 {
+    font-size: 12px;
+  }
+
+  .font-size-14 {
+    font-size: 14px;
+  }
+
+  .font-size-18 div {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .grid-1 {
+    padding-top: 0;
+    padding-bottom: 16px;
+  }
+
+  .grid-2 {
+    background-color: #fff;
+    padding: 20px;
+    height: 58px;
+  }
+
+  .grid-3 {
+    height: 58px;
+    padding: 5px 0 5px 0;
+  }
+
+  .grid-4 {
+    background-color: white;
+    padding: 0 !important;
+  }
+
+  .row-grid-4 {
+    border-bottom: 1px solid #dedede;
+    padding: 20px 20px 10px 20px;
+  }
+
+  .col-grid-4 {
+    padding: 0;
+  }
+
+  .div-grid-4 {
+    margin-top: 10px;
+    color: #797d80;
+    font-size: 12px;
+  }
+
+  .label-grid-4 {
+    margin-right: 9px;
+  }
+
+  .padding-grid-2 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .row-grid-3 {
+    height: 58px;
+    align-content: center;
+    padding: 0 20px 0 20px;
+    color: #707070;
+  }
+
+  .col-grid-3 {
+    padding: 0;
+  }
+
+  .row-prior-grid-4 {
+    padding: 14px 10px 14px 20px;
+  }
+
+  .col-prior-grid-4 {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .col-2-prior-grid-4 {
+    padding: 0px;
+  }
+
+  .button-grid-4 {
+    font-size: 12px;
+    padding: 0;
+    margin: 0px;
+    text-transform: none;
+    font-weight: normal;
+  }
+
+  .input-grid-4 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .padding-col {
+    padding: 0;
+  }
+
+  .button-contract {
+    padding: 0;
+    margin: -10px 0 0 0;
+    text-transform: none;
+    font-weight: normal;
+    font-size: 12px;
+    height: 100%;
+  }
+
+  .padding-0 {
+    padding: 0;
+  }
+
+  .text-input-ios {
+    margin: 0;
+  }
+}

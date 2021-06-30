@@ -1,0 +1,65 @@
+page-modals-terms-conditions {
+  .scroll-content {
+    padding: 8px 8px 9px 8px !important;
+  }
+
+  .font-size-18 div {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .bar-buttons-md[left] {
+    margin: 0px 6px 0px 6px;
+    padding: 0px 5px 0px 5px;
+  }
+
+  .toolbar-title-md {
+    color: #030404 !important;
+    text-align: left;
+  }
+
+  .content-md {
+    background-color: #ebebeb;
+    color: #030404;
+  }
+
+  .txt-comment {
+    font-size: 17px;
+    font-weight: 400;
+    color: #444444;
+    margin: 6px 0 0 0;
+    width: 100%;
+    border: none;
+    height: 58px;
+    resize: none;
+    padding: 0px;
+  }
+
+  .text-input-md {
+    margin: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  textarea {
+    overflow: hidden;
+    white-space: break-spaces;
+  }
+
+  .grid-comments {
+    background-color: white;
+    padding: 16px 17px 16px 15px;
+  }
+
+  .btn-close {
+    font-size: 16px;
+    color: #2d2f2e;
+    height: 56px;
+    text-transform: capitalize;
+    margin-top: 0;
+  }
+
+  ion-footer {
+    display: inline-flex;
+  }
+}
